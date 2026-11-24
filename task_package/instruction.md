@@ -1,72 +1,78 @@
-# 连续稀释与定量移液
+# 连续稀释与定量移液 v0.2
 
 ## 科研目标
 
-在给定的模拟移液台上，从 1000 µM 的库存液制备四个目标浓度的样品。目标浓度依次为 500 µM、250 µM、125 µM 和 62.5 µM。实验采用连续 1:2 稀释，每一级先在目标管中加入 500 µL 前一级溶液和 500 µL 稀释液并混匀，再向下一级转移 500 µL。流程结束时，T1、T2、T3 各保留 500 µL，T4 保留 1000 µL。这些是评分器核验的终态体积。
+在模拟移液台上，从 1000 µM 库存液制备 500、250、125 和 62.5 µM 四级样品。实验采用连续 1:2 稀释，每一级加入 500 µL 前一级溶液和 500 µL 稀释液并混匀，再向下一级转移 500 µL。流程结束时，T1、T2、T3 各保留 500 µL，T4 保留 1000 µL。
 
-这是一项有明确实验协议的科学流程任务。目标是完成满足浓度、体积、顺序和污染控制要求的可复现实验，并提交可审计的操作记录。任务不要求提出新的稀释方法或科学结论。
+任务要求 Agent 根据操作反馈处理一次可恢复的移液失败，识别有限的体积测量误差，避免吸头跨源复用，并提交可审计的实验质量记录。这是 L1 科学流程执行任务，不要求科学突破。
 
-## 输入
+## 输入与约束
 
-实验协议位于 `/work/input/protocol.json`。文件给出库存浓度、目标管顺序、目标浓度、最终体积、允许的移液器范围和操作约束。运行时应读取该文件，不能假定文件路径之外存在额外输入。
+实验协议位于 `/work/input/protocol.json`。协议包含库存和稀释液体积、目标浓度、移液器范围、测量误差模式、失败事件和重试上限。不得假定协议文件之外存在额外输入。
 
-## 可用环境与工具
+每次 `transfer` 使用一个吸头。吸头不得在不同源容器之间复用。每个目标管在两次加液之后必须混匀，混匀循环至少为 3。不得从当前液体不足的容器中吸取液体。
 
-容器内提供 Python 3 和 `/work/tools/check_submission.py`。完成输出后，可以运行：
+协议中的失败事件会按 `action_id` 触发。失败动作不会改变容器状态，Agent 必须读取反馈并在允许的重试次数内提交带 `retry_of` 的重试动作。
+
+## 可用工具
+
+容器内提供：
 
 ```bash
 python3 /work/tools/check_submission.py /work/input/protocol.json /work/output/submission.json
+python3 /work/tools/feedback.py --protocol /work/input/protocol.json --state /work/output/feedback_state.json --action /work/output/next_action.json
 ```
 
-检查工具只做公开格式和基本物理约束检查。最终成绩由独立评分环境重新计算。
+`feedback.py` 用于逐步执行动作并返回状态、失败原因、测量值或重试提示。它不会替代独立评分器。
 
-## 操作协议
+## 动作格式
 
-需要提交一个 JSON 文件 `/work/output/submission.json`，其中 `actions` 是按实际执行顺序排列的动作数组。允许的动作如下：
+`submission.json` 必须包含按实际执行顺序排列的 `actions`，动作类型包括：
 
-- `transfer`，字段为 `source`、`dest`、`volume_ul`、`pipette` 和 `tip_id`
-- `mix`，字段为 `dest`、`volume_ul`、`cycles`、`pipette` 和 `tip_id`
+- `transfer`，字段为 `action_id`、`source`、`dest`、`volume_ul`、`pipette`、`tip_id`。重试动作增加 `retry_of`。
+- `mix`，字段为 `dest`、`volume_ul`、`cycles`、`pipette`、`tip_id`。
+- `measure`，字段为 `target`、`measurement_id`。测量结果由反馈工具生成。
 
-容器名称必须使用输入文件中的名称。`source` 可以是 `stock`、`diluent` 或目标管。每次 `transfer` 使用一个吸头。吸头不得在不同源容器之间复用。每个目标管在加入样品和稀释液后必须混匀，混匀动作的 `cycles` 至少为 3。混匀体积不得超过该管当前液体体积。
-
-推荐使用 1000 µL 移液器完成 500 µL 转移。输入文件中的移液器范围和最小、最大体积约束必须遵守。不得从目标管中吸取超过当前可用体积的液体，不得超过库存液或稀释液的可用体积。
+失败动作及其重试必须保留在动作记录中。不得删除失败动作来伪造无故障流程。
 
 ## 最终交付
 
-必须写出 `/work/output/submission.json`，格式如下：
+必须写出 `/work/output/submission.json`。除 `actions` 外，还必须包含 `report`：
 
 ```json
 {
-  "actions": [
-    {
-      "type": "transfer",
-      "source": "diluent",
-      "dest": "T1",
-      "volume_ul": 500,
-      "pipette": "p1000",
-      "tip_id": "tip-001"
-    }
-  ],
-  "notes": "可选的简短实验说明"
+  "actions": [],
+  "report": {
+    "samples": [
+      {
+        "name": "T1",
+        "measured_volume_ul": 500.8,
+        "volume_error_ul": 0.8,
+        "estimated_concentration_um": 500.0,
+        "concentration_error_fraction": 0.0,
+        "quality_flags": ["measurement_uncertainty"]
+      }
+    ],
+    "events": [
+      {"action_id": "t2_sample_attempt1", "status": "failed", "reason": "temporary_pipette_failure"}
+    ],
+    "quality_flags": ["measurement_uncertainty", "retry_performed", "no_cross_source_tip_reuse"]
+  }
 }
 ```
 
-`actions` 必须是实际执行顺序。不得只提交最终浓度表来替代动作记录。可以附加 `observations` 字段记录过程观察，但评分以动作和可由动作重建的状态为准。
+`report.samples` 必须覆盖 T1–T4。测量值、体积误差、估计浓度和浓度误差必须与评分器重建结果一致。`report.events` 必须记录失败动作和重试事实。
 
 ## 验收标准
 
-独立评分器会根据动作记录重建每个容器的体积和溶质浓度，并检查：
+独立评分器会重放动作并检查：
 
-1. T1、T2、T3 的终态体积均为 500 µL，T4 的终态体积为 1000 µL，误差不超过 1 µL。
-2. 四个目标管的浓度分别为 500、250、125、62.5 µM，误差不超过目标值的 1%。
-3. 样品转移顺序正确，后一管只能从前一管或库存液获得样品。
-4. 稀释液和样品的体积、库存液余量均满足守恒。
-5. 每次转移遵守移液器容量范围，每个目标管完成至少 3 次混匀循环。
-6. 吸头没有跨源容器复用，且没有发生负体积、超量吸取、未知容器或非法动作。
-7. 输出 JSON 可解析，动作记录完整且顺序明确。
+1. 终态体积与目标值误差不超过 1 µL。
+2. 目标浓度误差不超过 1%。
+3. 失败动作没有改变容器状态，重试动作引用正确的失败动作。
+4. 操作顺序、液体守恒、移液器范围、混匀和吸头来源规则满足协议。
+5. `report.samples` 的测量值、体积误差、浓度和浓度误差与重放结果一致。
+6. 质量记录包含测量不确定性、失败重试和吸头污染控制信息。
+7. 输出 JSON 可解析，动作记录完整。
 
-评分器会同时报告原始指标和最终分数。达到全部必要条件得 100 分。任何关键科学条件未满足时，分数按缺陷严重程度下降。缺少输出文件或 JSON 无法解析时属于 `invalid_submission`。
-
-## 中途验证
-
-可以随时使用 `/work/tools/check_submission.py` 检查当前输出。该工具不会替代独立评分，也不会提供隐藏测试信息。
+关键科学条件未满足时会扣分。缺少输出文件或 JSON 无法解析时属于 `invalid_submission`。

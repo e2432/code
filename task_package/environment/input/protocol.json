@@ -1,17 +1,64 @@
 {
-  "stock": {"concentration_um": 1000.0, "volume_ul": 1200.0},
-  "diluent": {"concentration_um": 0.0, "volume_ul": 2600.0},
+  "stock": {
+    "concentration_um": 1000.0,
+    "volume_ul": 1200.0
+  },
+  "diluent": {
+    "concentration_um": 0.0,
+    "volume_ul": 2600.0
+  },
   "targets": [
-    {"name": "T1", "concentration_um": 500.0, "final_volume_ul": 500.0, "sample_source": "stock"},
-    {"name": "T2", "concentration_um": 250.0, "final_volume_ul": 500.0, "sample_source": "T1"},
-    {"name": "T3", "concentration_um": 125.0, "final_volume_ul": 500.0, "sample_source": "T2"},
-    {"name": "T4", "concentration_um": 62.5, "final_volume_ul": 1000.0, "sample_source": "T3"}
+    {
+      "name": "T1",
+      "concentration_um": 500.0,
+      "final_volume_ul": 500.0,
+      "sample_source": "stock"
+    },
+    {
+      "name": "T2",
+      "concentration_um": 250.0,
+      "final_volume_ul": 500.0,
+      "sample_source": "T1"
+    },
+    {
+      "name": "T3",
+      "concentration_um": 125.0,
+      "final_volume_ul": 500.0,
+      "sample_source": "T2"
+    },
+    {
+      "name": "T4",
+      "concentration_um": 62.5,
+      "final_volume_ul": 1000.0,
+      "sample_source": "T3"
+    }
   ],
   "pipettes": {
-    "p200": {"min_ul": 20.0, "max_ul": 200.0},
-    "p1000": {"min_ul": 100.0, "max_ul": 1000.0}
+    "p200": {
+      "min_ul": 20.0,
+      "max_ul": 200.0
+    },
+    "p1000": {
+      "min_ul": 100.0,
+      "max_ul": 1000.0
+    }
   },
   "transfer_tolerance_ul": 1.0,
   "concentration_tolerance_fraction": 0.01,
-  "min_mix_cycles": 3
+  "min_mix_cycles": 3,
+  "simulation": {
+    "measurement_error_pattern_ul": [
+      0.8,
+      -0.6,
+      0.4,
+      -0.3
+    ],
+    "failure_schedule": [
+      {
+        "action_id": "t2_sample_attempt1",
+        "reason": "temporary_pipette_failure"
+      }
+    ],
+    "max_retries": 2
+  }
 }

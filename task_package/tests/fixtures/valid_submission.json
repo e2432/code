@@ -1,0 +1,194 @@
+{
+  "actions": [
+    {
+      "type": "transfer",
+      "action_id": "t1_sample",
+      "source": "stock",
+      "dest": "T1",
+      "volume_ul": 500,
+      "pipette": "p1000",
+      "tip_id": "tip-001"
+    },
+    {
+      "type": "transfer",
+      "action_id": "t1_diluent",
+      "source": "diluent",
+      "dest": "T1",
+      "volume_ul": 500,
+      "pipette": "p1000",
+      "tip_id": "tip-002"
+    },
+    {
+      "type": "mix",
+      "dest": "T1",
+      "volume_ul": 1000,
+      "cycles": 5,
+      "pipette": "p1000",
+      "tip_id": "tip-003"
+    },
+    {
+      "type": "transfer",
+      "action_id": "t2_sample_attempt1",
+      "source": "T1",
+      "dest": "T2",
+      "volume_ul": 500,
+      "pipette": "p1000",
+      "tip_id": "tip-004"
+    },
+    {
+      "type": "transfer",
+      "action_id": "t2_sample_retry",
+      "retry_of": "t2_sample_attempt1",
+      "source": "T1",
+      "dest": "T2",
+      "volume_ul": 500,
+      "pipette": "p1000",
+      "tip_id": "tip-005"
+    },
+    {
+      "type": "transfer",
+      "action_id": "t2_diluent",
+      "source": "diluent",
+      "dest": "T2",
+      "volume_ul": 500,
+      "pipette": "p1000",
+      "tip_id": "tip-006"
+    },
+    {
+      "type": "mix",
+      "dest": "T2",
+      "volume_ul": 1000,
+      "cycles": 5,
+      "pipette": "p1000",
+      "tip_id": "tip-007"
+    },
+    {
+      "type": "transfer",
+      "action_id": "t3_sample",
+      "source": "T2",
+      "dest": "T3",
+      "volume_ul": 500,
+      "pipette": "p1000",
+      "tip_id": "tip-008"
+    },
+    {
+      "type": "transfer",
+      "action_id": "t3_diluent",
+      "source": "diluent",
+      "dest": "T3",
+      "volume_ul": 500,
+      "pipette": "p1000",
+      "tip_id": "tip-009"
+    },
+    {
+      "type": "mix",
+      "dest": "T3",
+      "volume_ul": 1000,
+      "cycles": 5,
+      "pipette": "p1000",
+      "tip_id": "tip-010"
+    },
+    {
+      "type": "transfer",
+      "action_id": "t4_sample",
+      "source": "T3",
+      "dest": "T4",
+      "volume_ul": 500,
+      "pipette": "p1000",
+      "tip_id": "tip-011"
+    },
+    {
+      "type": "transfer",
+      "action_id": "t4_diluent",
+      "source": "diluent",
+      "dest": "T4",
+      "volume_ul": 500,
+      "pipette": "p1000",
+      "tip_id": "tip-012"
+    },
+    {
+      "type": "mix",
+      "dest": "T4",
+      "volume_ul": 1000,
+      "cycles": 5,
+      "pipette": "p1000",
+      "tip_id": "tip-013"
+    },
+    {
+      "type": "measure",
+      "target": "T1",
+      "measurement_id": "m1"
+    },
+    {
+      "type": "measure",
+      "target": "T2",
+      "measurement_id": "m2"
+    },
+    {
+      "type": "measure",
+      "target": "T3",
+      "measurement_id": "m3"
+    },
+    {
+      "type": "measure",
+      "target": "T4",
+      "measurement_id": "m4"
+    }
+  ],
+  "report": {
+    "samples": [
+      {
+        "name": "T1",
+        "measured_volume_ul": 500.8,
+        "volume_error_ul": 0.8,
+        "estimated_concentration_um": 500.0,
+        "concentration_error_fraction": 0.0,
+        "quality_flags": [
+          "measurement_uncertainty"
+        ]
+      },
+      {
+        "name": "T2",
+        "measured_volume_ul": 499.4,
+        "volume_error_ul": -0.6,
+        "estimated_concentration_um": 250.0,
+        "concentration_error_fraction": 0.0,
+        "quality_flags": [
+          "measurement_uncertainty"
+        ]
+      },
+      {
+        "name": "T3",
+        "measured_volume_ul": 500.4,
+        "volume_error_ul": 0.4,
+        "estimated_concentration_um": 125.0,
+        "concentration_error_fraction": 0.0,
+        "quality_flags": [
+          "measurement_uncertainty"
+        ]
+      },
+      {
+        "name": "T4",
+        "measured_volume_ul": 999.7,
+        "volume_error_ul": -0.3,
+        "estimated_concentration_um": 62.5,
+        "concentration_error_fraction": 0.0,
+        "quality_flags": [
+          "measurement_uncertainty"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "action_id": "t2_sample_attempt1",
+        "status": "failed",
+        "reason": "temporary_pipette_failure"
+      }
+    ],
+    "quality_flags": [
+      "measurement_uncertainty",
+      "retry_performed",
+      "no_cross_source_tip_reuse"
+    ]
+  }
+}
