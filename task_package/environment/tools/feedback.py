@@ -6,7 +6,7 @@ def main():
     protocol=json.loads(Path(args.protocol).read_text(encoding="utf-8-sig")); action=json.loads(Path(args.action).read_text(encoding="utf-8-sig")); state_path=Path(args.state)
     if state_path.exists(): state=json.loads(state_path.read_text(encoding="utf-8-sig"))
     else:
-        state={"containers":{"stock":{"volume":protocol["stock"]["volume_ul"],"solute":protocol["stock"]["volume_ul"]*protocol["stock"]["concentration_um"]},"diluent":{"volume":protocol["diluent"]["volume_ul"],"solute":0.0}},"step":0,"failed_ids":[],"measure_index":0}
+        state={"containers":{"stock":{"volume":protocol["stock"]["volume_ul"],"solute":protocol["stock"]["volume_ul"]*protocol["stock"]["concentration_um"]},"diluent":{"volume":protocol["diluent"]["volume_ul"],"solute":0.0}},"step":0,"failed_ids":[],"measure_index":0,"used_tips":{}}
         for target in protocol["targets"]: state["containers"][target["name"]]={"volume":0.0,"solute":0.0}
     kind=action.get("type"); feedback={"step":state["step"],"status":"ok"}
     if kind=="transfer":
@@ -14,8 +14,15 @@ def main():
         if aid in failures and not action.get("retry_of"):
             state["failed_ids"].append(aid); feedback.update({"status":"failed","reason":failures[aid],"retry_required":True})
         else:
-            source,dest=action["source"],action["dest"]; volume=float(action["volume_ul"]); c=state["containers"][source]["solute"]/state["containers"][source]["volume"] if state["containers"][source]["volume"] else 0.0
-            state["containers"][source]["volume"]-=volume; state["containers"][source]["solute"]-=volume*c; state["containers"][dest]["volume"]+=volume; state["containers"][dest]["solute"]+=volume*c; feedback["realized_volume_ul"]=volume
+            source,dest=action["source"],action["dest"]; volume=float(action["volume_ul"]); tip_id=action.get("tip_id")
+            previous_source=state.setdefault("used_tips",{}).get(tip_id)
+            if previous_source is not None and previous_source!=source:
+                feedback.update({"status":"failed","reason":"cross_source_tip_reuse","contamination_risk":True})
+            elif state["containers"][source]["volume"]+1e-6<volume:
+                feedback.update({"status":"failed","reason":"insufficient_source_volume","retry_required":True})
+            else:
+                state["used_tips"][tip_id]=source; c=state["containers"][source]["solute"]/state["containers"][source]["volume"] if state["containers"][source]["volume"] else 0.0
+                state["containers"][source]["volume"]-=volume; state["containers"][source]["solute"]-=volume*c; state["containers"][dest]["volume"]+=volume; state["containers"][dest]["solute"]+=volume*c; feedback["realized_volume_ul"]=volume
     elif kind=="measure":
         target=action["target"]; pattern=protocol["simulation"]["measurement_error_pattern_ul"]; observed=state["containers"][target]["volume"]+pattern[state["measure_index"]%len(pattern)]; state["measure_index"]+=1; feedback.update({"target":target,"measured_volume_ul":observed,"measurement_error_ul":pattern[(state["measure_index"]-1)%len(pattern)]})
     elif kind=="mix": feedback["mixed_target"]=action["dest"]
