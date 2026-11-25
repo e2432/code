@@ -31,7 +31,7 @@
 │   └── 仿真实验室搭建教程-AutoBio参考.md  # AutoBio/MuJoCo 接入教程
 └── dist/
     ├── afe-serial-dilution-pipetting-v0.3.0.zip
-    └── afe-serial-dilution-pipetting-v0.2.0-teacher-review.zip
+    └── afe-serial-dilution-pipetting-v0.3.0-teacher-review.zip
 ```
 
 ## 任务摘要
