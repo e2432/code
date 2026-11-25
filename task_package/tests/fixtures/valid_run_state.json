@@ -1,0 +1,7 @@
+{
+  "status": "completed",
+  "instance_id": "default",
+  "last_safe_checkpoint": "after_T4_measurement",
+  "robot_motion": "stopped",
+  "pause_reason": null
+}

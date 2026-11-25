@@ -7,6 +7,10 @@
     "concentration_um": 0.0,
     "volume_ul": 2600.0
   },
+  "blank": {
+    "concentration_um": 0.0,
+    "volume_ul": 600.0
+  },
   "targets": [
     {
       "name": "T1",
@@ -46,13 +50,12 @@
   "transfer_tolerance_ul": 1.0,
   "concentration_tolerance_fraction": 0.01,
   "min_mix_cycles": 3,
+  "mix_quality_minimum": 0.8,
+  "carryover_volume_ul": 1.0,
+  "required_measurement_repeats": 2,
   "simulation": {
-    "measurement_error_pattern_ul": [
-      0.8,
-      -0.6,
-      0.4,
-      -0.3
-    ],
+    "seed": 20261125,
+    "measurement_error_range_ul": 1.0,
     "failure_schedule": [
       {
         "action_id": "t2_sample_attempt1",
@@ -60,5 +63,39 @@
       }
     ],
     "max_retries": 2
-  }
+  },
+  "calibration": {
+    "p1000": {
+      "reference_volume_ul": 500.0,
+      "tolerance_ul": 2.0
+    }
+  },
+  "instances": [
+    {
+      "id": "default",
+      "seed": 20261125,
+      "failure_schedule": [
+        {
+          "action_id": "t2_sample_attempt1",
+          "reason": "temporary_pipette_failure"
+        }
+      ]
+    },
+    {
+      "id": "failure_t3",
+      "seed": 20261126,
+      "failure_schedule": [
+        {
+          "action_id": "t3_sample_attempt1",
+          "reason": "temporary_pipette_failure"
+        }
+      ]
+    },
+    {
+      "id": "low_stock",
+      "seed": 20261127,
+      "failure_schedule": [],
+      "stock_volume_ul": 300.0
+    }
+  ]
 }

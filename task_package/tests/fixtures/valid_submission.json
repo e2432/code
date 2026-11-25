@@ -1,5 +1,12 @@
 {
+  "instance_id": "default",
   "actions": [
+    {
+      "type": "calibrate",
+      "pipette": "p1000",
+      "reference_volume_ul": 500.0,
+      "measured_volume_ul": 500.2
+    },
     {
       "type": "transfer",
       "action_id": "t1_sample",
@@ -22,9 +29,7 @@
       "type": "mix",
       "dest": "T1",
       "volume_ul": 1000,
-      "cycles": 5,
-      "pipette": "p1000",
-      "tip_id": "tip-003"
+      "cycles": 5
     },
     {
       "type": "transfer",
@@ -33,7 +38,7 @@
       "dest": "T2",
       "volume_ul": 500,
       "pipette": "p1000",
-      "tip_id": "tip-004"
+      "tip_id": "tip-003"
     },
     {
       "type": "transfer",
@@ -43,7 +48,7 @@
       "dest": "T2",
       "volume_ul": 500,
       "pipette": "p1000",
-      "tip_id": "tip-005"
+      "tip_id": "tip-004"
     },
     {
       "type": "transfer",
@@ -52,15 +57,13 @@
       "dest": "T2",
       "volume_ul": 500,
       "pipette": "p1000",
-      "tip_id": "tip-006"
+      "tip_id": "tip-005"
     },
     {
       "type": "mix",
       "dest": "T2",
       "volume_ul": 1000,
-      "cycles": 5,
-      "pipette": "p1000",
-      "tip_id": "tip-007"
+      "cycles": 5
     },
     {
       "type": "transfer",
@@ -69,7 +72,7 @@
       "dest": "T3",
       "volume_ul": 500,
       "pipette": "p1000",
-      "tip_id": "tip-008"
+      "tip_id": "tip-006"
     },
     {
       "type": "transfer",
@@ -78,15 +81,13 @@
       "dest": "T3",
       "volume_ul": 500,
       "pipette": "p1000",
-      "tip_id": "tip-009"
+      "tip_id": "tip-007"
     },
     {
       "type": "mix",
       "dest": "T3",
       "volume_ul": 1000,
-      "cycles": 5,
-      "pipette": "p1000",
-      "tip_id": "tip-010"
+      "cycles": 5
     },
     {
       "type": "transfer",
@@ -95,7 +96,7 @@
       "dest": "T4",
       "volume_ul": 500,
       "pipette": "p1000",
-      "tip_id": "tip-011"
+      "tip_id": "tip-008"
     },
     {
       "type": "transfer",
@@ -104,80 +105,149 @@
       "dest": "T4",
       "volume_ul": 500,
       "pipette": "p1000",
-      "tip_id": "tip-012"
+      "tip_id": "tip-009"
     },
     {
       "type": "mix",
       "dest": "T4",
       "volume_ul": 1000,
-      "cycles": 5,
-      "pipette": "p1000",
-      "tip_id": "tip-013"
+      "cycles": 5
+    },
+    {
+      "type": "measure",
+      "target": "blank",
+      "measurement_id": "blank-m1"
+    },
+    {
+      "type": "measure",
+      "target": "blank",
+      "measurement_id": "blank-m2"
     },
     {
       "type": "measure",
       "target": "T1",
-      "measurement_id": "m1"
+      "measurement_id": "T1-m1"
+    },
+    {
+      "type": "measure",
+      "target": "T1",
+      "measurement_id": "T1-m2"
     },
     {
       "type": "measure",
       "target": "T2",
-      "measurement_id": "m2"
+      "measurement_id": "T2-m1"
+    },
+    {
+      "type": "measure",
+      "target": "T2",
+      "measurement_id": "T2-m2"
     },
     {
       "type": "measure",
       "target": "T3",
-      "measurement_id": "m3"
+      "measurement_id": "T3-m1"
+    },
+    {
+      "type": "measure",
+      "target": "T3",
+      "measurement_id": "T3-m2"
     },
     {
       "type": "measure",
       "target": "T4",
-      "measurement_id": "m4"
+      "measurement_id": "T4-m1"
+    },
+    {
+      "type": "measure",
+      "target": "T4",
+      "measurement_id": "T4-m2"
+    },
+    {
+      "type": "finish"
     }
   ],
   "report": {
     "samples": [
       {
         "name": "T1",
-        "measured_volume_ul": 500.8,
-        "volume_error_ul": 0.8,
-        "estimated_concentration_um": 500.0,
-        "concentration_error_fraction": 0.0,
+        "measurements_ul": [
+          499.9053287738675,
+          499.4898788771315
+        ],
+        "mean_volume_ul": 499.6976038254995,
+        "volume_error_ul": -0.3023961745004726,
+        "volume_sd_ul": 0.20772494836799638,
+        "estimated_concentration_um": 500.3025791720687,
+        "concentration_error_fraction": 0.0006051583441374078,
         "quality_flags": [
+          "repeat_measurement",
           "measurement_uncertainty"
         ]
       },
       {
         "name": "T2",
-        "measured_volume_ul": 499.4,
-        "volume_error_ul": -0.6,
-        "estimated_concentration_um": 250.0,
-        "concentration_error_fraction": 0.0,
+        "measurements_ul": [
+          499.073971323984,
+          499.7934249666566
+        ],
+        "mean_volume_ul": 499.43369814532025,
+        "volume_error_ul": -0.5663018546797502,
+        "volume_sd_ul": 0.3597268213362952,
+        "estimated_concentration_um": 250.28347198876585,
+        "concentration_error_fraction": 0.0011338879550634147,
         "quality_flags": [
+          "repeat_measurement",
           "measurement_uncertainty"
         ]
       },
       {
         "name": "T3",
-        "measured_volume_ul": 500.4,
-        "volume_error_ul": 0.4,
-        "estimated_concentration_um": 125.0,
-        "concentration_error_fraction": 0.0,
+        "measurements_ul": [
+          500.33783306896373,
+          500.5295283045631
+        ],
+        "mean_volume_ul": 500.4336806867634,
+        "volume_error_ul": 0.43368068676340954,
+        "volume_sd_ul": 0.09584761779967721,
+        "estimated_concentration_um": 124.89167378628267,
+        "concentration_error_fraction": 0.0008666097097386683,
         "quality_flags": [
+          "repeat_measurement",
           "measurement_uncertainty"
         ]
       },
       {
         "name": "T4",
-        "measured_volume_ul": 999.7,
-        "volume_error_ul": -0.3,
-        "estimated_concentration_um": 62.5,
-        "concentration_error_fraction": 0.0,
+        "measurements_ul": [
+          999.2468859001596,
+          1000.883833775289
+        ],
+        "mean_volume_ul": 1000.0653598377243,
+        "volume_error_ul": 0.0653598377242588,
+        "volume_sd_ul": 0.8184739375647041,
+        "estimated_concentration_um": 62.49591527711906,
+        "concentration_error_fraction": 6.535556609503601e-05,
         "quality_flags": [
+          "repeat_measurement",
           "measurement_uncertainty"
         ]
       }
     ],
+    "blank": {
+      "measurements_ul": [
+        600.6891805368105,
+        599.0190215753772
+      ],
+      "mean_signal": 0.0,
+      "quality_flags": [
+        "blank_control"
+      ]
+    },
+    "calibration": {
+      "pipette": "p1000",
+      "status": "passed"
+    },
     "events": [
       {
         "action_id": "t2_sample_attempt1",
@@ -186,7 +256,9 @@
       }
     ],
     "quality_flags": [
-      "measurement_uncertainty",
+      "repeat_measurement",
+      "blank_control",
+      "calibration",
       "retry_performed",
       "no_cross_source_tip_reuse"
     ]

@@ -1,0 +1,41 @@
+{
+  "instance_id": "default",
+  "steps": [
+    {
+      "id": "calibrate",
+      "status": "completed"
+    },
+    {
+      "id": "prepare_T1",
+      "status": "completed"
+    },
+    {
+      "id": "prepare_T2",
+      "status": "completed"
+    },
+    {
+      "id": "prepare_T3",
+      "status": "completed"
+    },
+    {
+      "id": "prepare_T4",
+      "status": "completed"
+    },
+    {
+      "id": "blank_control",
+      "status": "completed"
+    },
+    {
+      "id": "repeat_measurements",
+      "status": "completed"
+    },
+    {
+      "id": "quality_report",
+      "status": "completed"
+    },
+    {
+      "id": "finish",
+      "status": "completed"
+    }
+  ]
+}

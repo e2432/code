@@ -3,8 +3,8 @@ artifacts = ["/work/output"]
 
 [task]
 name = "afe/serial-dilution-pipetting"
-version = "0.2.0"
-description = "在含测量误差和可恢复故障反馈的模拟移液环境中完成四级连续稀释并提交实验质量记录"
+version = "0.3.0"
+description = "在含重复测量、空白对照、校准、故障反馈和污染模型的模拟移液环境中完成四级连续稀释并提交实验质量记录"
 authors = [{ name = "AFE scientific embodied intelligence" }]
 
 [metadata.afe]
