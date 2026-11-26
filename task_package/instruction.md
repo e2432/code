@@ -8,7 +8,7 @@
 
 ## 仿真输入
 
-协议位于 `/work/input/protocol.json`。协议包含库存液、稀释液、空白样品、目标管、移液器范围、重复测量次数、随机种子、故障计划、校准要求和实例配置。评测器可以用不同实例替换协议中的 seed、故障位置和库存液体积。
+协议位于 `/work/input/protocol.json`。库存液和 750 µM 标准样是固定参考溶液。协议包含稀释液、空白样品、目标管、移液器范围、重复测量次数、随机种子、故障计划、校准要求和实例配置。评测器可以用不同实例替换协议中的 seed、故障位置和库存液体积。
 
 仿真环境应向 Agent 提供主相机、腕部相机、机械臂状态、容器状态和动作反馈。当前 AFE 版本通过文件反馈工具模拟这一接口，AutoBio/MuJoCo 接入教程见仓库 `docs/仿真实验室搭建教程-AutoBio参考.md`。
 
@@ -41,7 +41,7 @@ python3 /work/tools/check_submission.py /work/input/protocol.json /work/output/s
 
 `submission.json` 必须包含 `actions`、`report` 和 `instance_id`。质量报告至少包含：
 
-- 每个目标管的两次以上测量值
+- 每个目标管的三次测量值
 - 平均体积和体积误差
 - 估计浓度和浓度误差
 - 体积测量标准差
@@ -55,8 +55,8 @@ python3 /work/tools/check_submission.py /work/input/protocol.json /work/output/s
 评分器会重放动作，并检查：
 
 1. 校准通过，移液器测量误差在协议阈值内。
-2. 每个目标管和空白样品完成至少两次测量。
-3. 终态体积误差不超过 1 µL，浓度误差不超过 1%。
+2. 每个目标管、空白样和标准样完成三次测量。
+3. 浓度误差不超过 1%，体积误差不超过 5 µL。浓度误差是主指标，体积误差是辅助指标。
 4. 重复测量结果、平均值、标准差和报告字段一致。
 5. 混匀质量达到最低要求，混匀发生在下一级转移前。
 6. 失败动作不改变状态，重试动作引用正确的失败动作。
@@ -91,3 +91,14 @@ python3 /work/tools/check_submission.py /work/input/protocol.json /work/output/s
 ## 评分权重
 
 浓度误差是主指标，占最终分数的 80%。体积误差是辅助指标，占 10%，验收阈值为 5 µL。重复测量、标准样、空白、校准、故障恢复、污染控制、进度和完成收口占 10%。
+
+## 浓度误差的测定
+
+对每个目标管，先对三次体积测量取平均值 `V_measured`。仿真器根据动作重建该管中的溶质量 `S_reconstructed`，再计算估计浓度：
+
+```text
+C_estimated = S_reconstructed / V_measured
+concentration_error_fraction = |C_estimated - C_target| / C_target
+```
+
+评分器对四个目标管的浓度误差取平均，形成主指标。三次测量的标准差记录重复性。固定库存液和标准样用于检查移液、测量和浓度计算流程。空白样只用于检查背景信号和携带污染，不参与目标浓度主指标计算。
