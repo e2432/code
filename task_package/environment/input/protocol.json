@@ -7,6 +7,10 @@
     "concentration_um": 0.0,
     "volume_ul": 2600.0
   },
+  "standard": {
+    "concentration_um": 750.0,
+    "volume_ul": 600.0
+  },
   "blank": {
     "concentration_um": 0.0,
     "volume_ul": 600.0
@@ -47,15 +51,17 @@
       "max_ul": 1000.0
     }
   },
-  "transfer_tolerance_ul": 1.0,
+  "transfer_tolerance_ul": 5.0,
   "concentration_tolerance_fraction": 0.01,
   "min_mix_cycles": 3,
   "mix_quality_minimum": 0.8,
   "carryover_volume_ul": 1.0,
-  "required_measurement_repeats": 2,
+  "required_measurement_repeats": 3,
   "simulation": {
     "seed": 20261125,
-    "measurement_error_range_ul": 1.0,
+    "measurement_error_distribution": "normal",
+    "measurement_error_sd_ul": 1.0,
+    "measurement_error_clip_sd": 3.0,
     "failure_schedule": [
       {
         "action_id": "t2_sample_attempt1",
@@ -96,6 +102,22 @@
       "seed": 20261127,
       "failure_schedule": [],
       "stock_volume_ul": 300.0
+    },
+    {
+      "id": "vision_motion",
+      "seed": 20261128,
+      "failure_schedule": [
+        {"action_id": "observe_T1_attempt1", "reason": "visual_label_misread"},
+        {"action_id": "move_T2_attempt1", "reason": "motion_collision"}
+      ]
+    },
+    {
+      "id": "position_label_error",
+      "seed": 20261129,
+      "failure_schedule": [
+        {"action_id": "observe_T3_attempt1", "reason": "container_position_mismatch"},
+        {"action_id": "observe_T4_attempt1", "reason": "liquid_label_misread"}
+      ]
     }
   ]
 }

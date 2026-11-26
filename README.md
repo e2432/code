@@ -7,12 +7,12 @@
 | 阶段 | 状态 | 说明 |
 |---|---|---|
 | AFE L1 任务定义 | 已完成 | 目标、输入、输出、资源约束和验收标准已写入任务包 |
-| 抽象仿真器和评分器 | 已完成 | 支持多实例、重复测量、空白、校准、故障、混匀质量、污染和暂停复核 |
+| 抽象仿真器和评分器 | 已完成 | 支持多实例、三次重复测量、空白、标准样、校准、视觉和运动故障、混匀质量、污染和暂停复核 |
 | 远程服务器验证 | 已完成 | 在 `ailogin001.ihep.ac.cn` 上运行，结果为 `score=100`、`reward=1` |
 | 教师审阅材料 | 已完成 | 已提供任务说明、来源说明、验证记录和审阅版压缩包 |
 | AutoBio/MuJoCo 场景接入 | 规划中 | 已完成搭建教程，尚未接入真实 MuJoCo 场景和机械臂观测 |
 
-当前版本为 `v0.3.0`。可运行任务包已经完成，AutoBio 仿真接入属于下一阶段。
+当前版本为 `v0.4.0`。可运行任务包已经完成，AutoBio 仿真接入属于下一阶段。
 
 ## 目录
 
@@ -30,8 +30,8 @@
 │   ├── remote_validation_record.md       # 远程服务器验证记录
 │   └── 仿真实验室搭建教程-AutoBio参考.md  # AutoBio/MuJoCo 接入教程
 └── dist/
-    ├── afe-serial-dilution-pipetting-v0.3.0.zip
-    └── afe-serial-dilution-pipetting-v0.3.0-teacher-review.zip
+    ├── afe-serial-dilution-pipetting-v0.4.0.zip
+    └── afe-serial-dilution-pipetting-v0.4.0-teacher-review.zip
 ```
 
 ## 任务摘要

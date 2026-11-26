@@ -4,7 +4,7 @@
     {
       "type": "calibrate",
       "pipette": "p1000",
-      "reference_volume_ul": 500.0,
+      "reference_volume_ul": 500,
       "measured_volume_ul": 500.2
     },
     {
@@ -125,6 +125,26 @@
     },
     {
       "type": "measure",
+      "target": "blank",
+      "measurement_id": "blank-m3"
+    },
+    {
+      "type": "measure",
+      "target": "standard",
+      "measurement_id": "standard-m1"
+    },
+    {
+      "type": "measure",
+      "target": "standard",
+      "measurement_id": "standard-m2"
+    },
+    {
+      "type": "measure",
+      "target": "standard",
+      "measurement_id": "standard-m3"
+    },
+    {
+      "type": "measure",
       "target": "T1",
       "measurement_id": "T1-m1"
     },
@@ -132,6 +152,11 @@
       "type": "measure",
       "target": "T1",
       "measurement_id": "T1-m2"
+    },
+    {
+      "type": "measure",
+      "target": "T1",
+      "measurement_id": "T1-m3"
     },
     {
       "type": "measure",
@@ -145,6 +170,11 @@
     },
     {
       "type": "measure",
+      "target": "T2",
+      "measurement_id": "T2-m3"
+    },
+    {
+      "type": "measure",
       "target": "T3",
       "measurement_id": "T3-m1"
     },
@@ -152,6 +182,11 @@
       "type": "measure",
       "target": "T3",
       "measurement_id": "T3-m2"
+    },
+    {
+      "type": "measure",
+      "target": "T3",
+      "measurement_id": "T3-m3"
     },
     {
       "type": "measure",
@@ -164,6 +199,11 @@
       "measurement_id": "T4-m2"
     },
     {
+      "type": "measure",
+      "target": "T4",
+      "measurement_id": "T4-m3"
+    },
+    {
       "type": "finish"
     }
   ],
@@ -172,14 +212,15 @@
       {
         "name": "T1",
         "measurements_ul": [
-          499.9053287738675,
-          499.4898788771315
+          499.1702750065279,
+          498.51477619302256,
+          501.7033967802964
         ],
-        "mean_volume_ul": 499.6976038254995,
-        "volume_error_ul": -0.3023961745004726,
-        "volume_sd_ul": 0.20772494836799638,
-        "estimated_concentration_um": 500.3025791720687,
-        "concentration_error_fraction": 0.0006051583441374078,
+        "mean_volume_ul": 499.7961493266156,
+        "volume_error_ul": -0.20385067338440876,
+        "volume_sd_ul": 1.3749216488720473,
+        "estimated_concentration_um": 500.20393381747647,
+        "concentration_error_fraction": 0.000407867634952936,
         "quality_flags": [
           "repeat_measurement",
           "measurement_uncertainty"
@@ -188,14 +229,15 @@
       {
         "name": "T2",
         "measurements_ul": [
-          499.073971323984,
-          499.7934249666566
+          501.67038919234494,
+          498.4052140636627,
+          500.49016113925694
         ],
-        "mean_volume_ul": 499.43369814532025,
-        "volume_error_ul": -0.5663018546797502,
-        "volume_sd_ul": 0.3597268213362952,
-        "estimated_concentration_um": 250.28347198876585,
-        "concentration_error_fraction": 0.0011338879550634147,
+        "mean_volume_ul": 500.18858813175484,
+        "volume_error_ul": 0.18858813175484102,
+        "volume_sd_ul": 1.3499510767386265,
+        "estimated_concentration_um": 249.90574148619663,
+        "concentration_error_fraction": 0.0003770340552134712,
         "quality_flags": [
           "repeat_measurement",
           "measurement_uncertainty"
@@ -204,14 +246,15 @@
       {
         "name": "T3",
         "measurements_ul": [
-          500.33783306896373,
-          500.5295283045631
+          501.4865251129376,
+          498.4379531460162,
+          499.42721080810304
         ],
-        "mean_volume_ul": 500.4336806867634,
-        "volume_error_ul": 0.43368068676340954,
-        "volume_sd_ul": 0.09584761779967721,
-        "estimated_concentration_um": 124.89167378628267,
-        "concentration_error_fraction": 0.0008666097097386683,
+        "mean_volume_ul": 499.7838963556856,
+        "volume_error_ul": -0.2161036443143871,
+        "volume_sd_ul": 1.2698730105186389,
+        "estimated_concentration_um": 125.05404927156772,
+        "concentration_error_fraction": 0.0004323941725417626,
         "quality_flags": [
           "repeat_measurement",
           "measurement_uncertainty"
@@ -220,28 +263,45 @@
       {
         "name": "T4",
         "measurements_ul": [
-          999.2468859001596,
-          1000.883833775289
+          999.3538964797597,
+          998.9398007451048,
+          998.7399025251309
         ],
-        "mean_volume_ul": 1000.0653598377243,
-        "volume_error_ul": 0.0653598377242588,
-        "volume_sd_ul": 0.8184739375647041,
-        "estimated_concentration_um": 62.49591527711906,
-        "concentration_error_fraction": 6.535556609503601e-05,
+        "mean_volume_ul": 999.0111999166651,
+        "volume_error_ul": -0.9888000833349224,
+        "volume_sd_ul": 0.2556958158369634,
+        "estimated_concentration_um": 62.561861173541985,
+        "concentration_error_fraction": 0.0009897787766717555,
         "quality_flags": [
           "repeat_measurement",
           "measurement_uncertainty"
         ]
       }
     ],
+    "standard": {
+      "measurements_ul": [
+        600.2196753253237,
+        600.9783226185288,
+        600.2315332050899
+      ],
+      "mean_volume_ul": 600.4765103829808,
+      "mean_concentration_um": 749.4048346920221,
+      "concentration_error_fraction": 0.0007935537439705817,
+      "quality_flags": [
+        "known_concentration_standard",
+        "repeat_measurement"
+      ]
+    },
     "blank": {
       "measurements_ul": [
-        600.6891805368105,
-        599.0190215753772
+        600.0774124804595,
+        599.8854577982406,
+        599.2833010466704
       ],
       "mean_signal": 0.0,
       "quality_flags": [
-        "blank_control"
+        "blank_control",
+        "repeat_measurement"
       ]
     },
     "calibration": {
@@ -258,6 +318,7 @@
     "quality_flags": [
       "repeat_measurement",
       "blank_control",
+      "known_concentration_standard",
       "calibration",
       "retry_performed",
       "no_cross_source_tip_reuse"
