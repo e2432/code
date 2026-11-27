@@ -1,0 +1,4 @@
+interface:
+  display_name: "AFE 任务包构建与审核"
+  short_description: "从科研问题构建 Harbor 任务包，或只读审核已有题包并生成统一报告"
+  default_prompt: "使用 $afe-task，根据我的请求构建或审核 AFE 任务包，明确科学验收条件并提供自查或审核报告。"

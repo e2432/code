@@ -1,0 +1,7 @@
+{
+  "name": "方法 A（填写示例，请替换）",
+  "proposed_at": "2025-03",
+  "description": "在这里准确说明方法原理和适用条件；作为参考提供时应选择相关条件下的现有最佳方法。",
+  "source_urls": ["https://example.org/replace-with-method-source"],
+  "notes": "这里只演示信息结构，没有本题实测成绩，因此省略 raw 和 score。"
+}

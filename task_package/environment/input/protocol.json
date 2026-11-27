@@ -56,7 +56,7 @@
   "transfer_tolerance_ul": 5.0,
   "concentration_tolerance_fraction": 0.01,
   "min_mix_cycles": 3,
-  "mix_quality_minimum": 0.8,
+  "mix_quality_minimum": 0.6,
   "carryover_volume_ul": 1.0,
   "required_measurement_repeats": 3,
   "simulation": {
@@ -64,13 +64,12 @@
     "measurement_error_distribution": "normal",
     "measurement_error_sd_ul": 1.0,
     "measurement_error_clip_sd": 3.0,
-    "failure_schedule": [
-      {
-        "action_id": "t2_sample_attempt1",
-        "reason": "temporary_pipette_failure"
-      }
-    ],
-    "max_retries": 2
+    "failure_schedule": [],
+    "max_retries": 2,
+    "transfer_error_distribution": "normal",
+    "transfer_error_sd_ul": 1.0,
+    "transfer_error_clip_sd": 3.0,
+    "transfer_systematic_bias_ul": 0.0
   },
   "calibration": {
     "p1000": {
@@ -84,9 +83,13 @@
       "seed": 20261125,
       "failure_schedule": [
         {
-          "action_id": "t2_sample_attempt1",
+          "step_id": "t2_sample",
+          "attempt": 1,
           "reason": "temporary_pipette_failure"
         }
+      ],
+      "required_steps": [
+        "t2_sample"
       ]
     },
     {
@@ -94,32 +97,171 @@
       "seed": 20261126,
       "failure_schedule": [
         {
-          "action_id": "t3_sample_attempt1",
+          "step_id": "t3_sample",
+          "attempt": 1,
           "reason": "temporary_pipette_failure"
         }
+      ],
+      "required_steps": [
+        "t3_sample"
       ]
     },
     {
       "id": "low_stock",
       "seed": 20261127,
       "failure_schedule": [],
-      "stock_volume_ul": 300.0
+      "stock_volume_ul": 300.0,
+      "expected_outcome": "pause",
+      "expected_pause_step": {
+        "id": "t1_sample",
+        "type": "transfer",
+        "source": "stock",
+        "dest": "T1",
+        "volume_ul": 500.0
+      }
     },
     {
       "id": "vision_motion",
       "seed": 20261128,
       "failure_schedule": [
-        {"action_id": "observe_T1_attempt1", "reason": "visual_label_misread"},
-        {"action_id": "move_T2_attempt1", "reason": "motion_collision"}
+        {
+          "step_id": "observe_T1",
+          "attempt": 1,
+          "reason": "visual_label_misread"
+        },
+        {
+          "step_id": "move_T2",
+          "attempt": 1,
+          "reason": "motion_collision"
+        }
+      ],
+      "required_steps": [
+        "observe_T1",
+        "move_T2"
       ]
     },
     {
       "id": "position_label_error",
       "seed": 20261129,
       "failure_schedule": [
-        {"action_id": "observe_T3_attempt1", "reason": "container_position_mismatch"},
-        {"action_id": "observe_T4_attempt1", "reason": "liquid_label_misread"}
+        {
+          "step_id": "observe_T3",
+          "attempt": 1,
+          "reason": "container_position_mismatch"
+        },
+        {
+          "step_id": "observe_T4",
+          "attempt": 1,
+          "reason": "liquid_label_misread"
+        }
+      ],
+      "required_steps": [
+        "observe_T3",
+        "observe_T4"
       ]
     }
+  ],
+  "version": "0.5.1",
+  "score_caps": {
+    "scientific_gate": 50.0,
+    "record_gate": 80.0,
+    "safe_pause": 50.0
+  },
+  "instance_selection": {
+    "production": "AFE_INSTANCE_ID",
+    "local_debug": "submission.instance_id"
+  },
+  "assay": {
+    "enabled": false,
+    "note": "Standard and blank are volume-quality controls until an independent concentration readout is implemented."
+  },
+  "steps": [
+    {
+      "id": "t1_sample",
+      "type": "transfer",
+      "source": "stock",
+      "dest": "T1",
+      "volume_ul": 500.0
+    },
+    {
+      "id": "t1_diluent",
+      "type": "transfer",
+      "source": "diluent",
+      "dest": "T1",
+      "volume_ul": 500.0
+    },
+    {
+      "id": "t2_sample",
+      "type": "transfer",
+      "source": "T1",
+      "dest": "T2",
+      "volume_ul": 500.0
+    },
+    {
+      "id": "t2_diluent",
+      "type": "transfer",
+      "source": "diluent",
+      "dest": "T2",
+      "volume_ul": 500.0
+    },
+    {
+      "id": "t3_sample",
+      "type": "transfer",
+      "source": "T2",
+      "dest": "T3",
+      "volume_ul": 500.0
+    },
+    {
+      "id": "t3_diluent",
+      "type": "transfer",
+      "source": "diluent",
+      "dest": "T3",
+      "volume_ul": 500.0
+    },
+    {
+      "id": "t4_sample",
+      "type": "transfer",
+      "source": "T3",
+      "dest": "T4",
+      "volume_ul": 500.0
+    },
+    {
+      "id": "t4_diluent",
+      "type": "transfer",
+      "source": "diluent",
+      "dest": "T4",
+      "volume_ul": 500.0
+    },
+    {
+      "id": "observe_T1",
+      "type": "observe",
+      "target": "T1"
+    },
+    {
+      "id": "move_T2",
+      "type": "move",
+      "target": "T2"
+    },
+    {
+      "id": "observe_T3",
+      "type": "observe",
+      "target": "T3"
+    },
+    {
+      "id": "observe_T4",
+      "type": "observe",
+      "target": "T4"
+    }
+  ],
+  "progress_steps": [
+    "calibrate",
+    "prepare_T1",
+    "prepare_T2",
+    "prepare_T3",
+    "prepare_T4",
+    "blank_control",
+    "repeat_measurements",
+    "quality_report",
+    "finish"
   ]
 }

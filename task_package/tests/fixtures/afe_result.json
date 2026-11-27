@@ -1,0 +1,437 @@
+{
+  "status": "evaluated",
+  "score": 100.0,
+  "raw": {
+    "outcome": "completed",
+    "metrics": {
+      "T1": {
+        "measurements_ul": [
+          499.579875,
+          503.430475,
+          501.634417
+        ],
+        "mean_volume_ul": 501.548256,
+        "volume_error_ul": 1.680983,
+        "measurement_error_ul": -0.132727,
+        "volume_sd_ul": 1.573181,
+        "estimated_concentration_um": 501.170201,
+        "estimated_concentration_error_fraction": 0.00234,
+        "concentration_error_fraction": 0.002075,
+        "true_volume_ul": 501.680983,
+        "target_volume_error_ul": 1.680983,
+        "true_concentration_um": 501.037609
+      },
+      "T2": {
+        "measurements_ul": [
+          500.749297,
+          499.953183,
+          499.74192
+        ],
+        "mean_volume_ul": 500.148133,
+        "volume_error_ul": 0.468327,
+        "measurement_error_ul": -0.320193,
+        "volume_sd_ul": 0.433749,
+        "estimated_concentration_um": 250.201738,
+        "estimated_concentration_error_fraction": 0.000807,
+        "concentration_error_fraction": 0.000167,
+        "true_volume_ul": 500.468327,
+        "target_volume_error_ul": 0.468327,
+        "true_concentration_um": 250.041662
+      },
+      "T3": {
+        "measurements_ul": [
+          496.232401,
+          496.643889,
+          496.772784
+        ],
+        "mean_volume_ul": 496.549691,
+        "volume_error_ul": -3.499244,
+        "measurement_error_ul": 0.048935,
+        "volume_sd_ul": 0.230446,
+        "estimated_concentration_um": 124.828969,
+        "estimated_concentration_error_fraction": 0.001368,
+        "concentration_error_fraction": 0.00127,
+        "true_volume_ul": 496.500756,
+        "target_volume_error_ul": -3.499244,
+        "true_concentration_um": 124.841272
+      },
+      "T4": {
+        "measurements_ul": [
+          1000.450535,
+          1001.623405,
+          1001.901826
+        ],
+        "mean_volume_ul": 1001.325255,
+        "volume_error_ul": 0.550787,
+        "measurement_error_ul": 0.774468,
+        "volume_sd_ul": 0.628878,
+        "estimated_concentration_um": 62.418698,
+        "estimated_concentration_error_fraction": 0.001301,
+        "concentration_error_fraction": 0.000528,
+        "true_volume_ul": 1000.550787,
+        "target_volume_error_ul": 0.550787,
+        "true_concentration_um": 62.467012
+      }
+    },
+    "standard": {
+      "measurements_ul": [
+        600.711708,
+        598.938681,
+        600.137889
+      ],
+      "mean_volume_ul": 599.929426,
+      "volume_sd_ul": 0.738692,
+      "assay_status": "not_implemented"
+    },
+    "blank": {
+      "measurements_ul": [
+        600.37746,
+        598.926859,
+        599.570139
+      ],
+      "mean_volume_ul": 599.624819,
+      "volume_sd_ul": 0.593466,
+      "assay_status": "not_implemented"
+    },
+    "events": [
+      {
+        "action_id": "t1_sample",
+        "status": "ok",
+        "operation": "transfer",
+        "semantic_step": {
+          "id": "t1_sample",
+          "type": "transfer",
+          "source": "stock",
+          "dest": "T1",
+          "volume_ul": 500.0
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "t1_diluent",
+        "status": "ok",
+        "operation": "transfer",
+        "semantic_step": {
+          "id": "t1_diluent",
+          "type": "transfer",
+          "source": "diluent",
+          "dest": "T1",
+          "volume_ul": 500.0
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "mix_T1",
+        "status": "ok",
+        "operation": "mix",
+        "target": "T1",
+        "cycles": 3
+      },
+      {
+        "action_id": "t2_sample_attempt1",
+        "status": "failed",
+        "reason": "temporary_pipette_failure",
+        "semantic_step": {
+          "id": "t2_sample",
+          "type": "transfer",
+          "source": "T1",
+          "dest": "T2",
+          "volume_ul": 500.0
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "t2_sample_retry",
+        "status": "ok",
+        "operation": "transfer",
+        "semantic_step": {
+          "id": "t2_sample",
+          "type": "transfer",
+          "source": "T1",
+          "dest": "T2",
+          "volume_ul": 500.0
+        },
+        "attempt": 2
+      },
+      {
+        "action_id": "t2_diluent",
+        "status": "ok",
+        "operation": "transfer",
+        "semantic_step": {
+          "id": "t2_diluent",
+          "type": "transfer",
+          "source": "diluent",
+          "dest": "T2",
+          "volume_ul": 500.0
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "mix_T2",
+        "status": "ok",
+        "operation": "mix",
+        "target": "T2",
+        "cycles": 3
+      },
+      {
+        "action_id": "t3_sample",
+        "status": "ok",
+        "operation": "transfer",
+        "semantic_step": {
+          "id": "t3_sample",
+          "type": "transfer",
+          "source": "T2",
+          "dest": "T3",
+          "volume_ul": 500.0
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "t3_diluent",
+        "status": "ok",
+        "operation": "transfer",
+        "semantic_step": {
+          "id": "t3_diluent",
+          "type": "transfer",
+          "source": "diluent",
+          "dest": "T3",
+          "volume_ul": 500.0
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "mix_T3",
+        "status": "ok",
+        "operation": "mix",
+        "target": "T3",
+        "cycles": 3
+      },
+      {
+        "action_id": "t4_sample",
+        "status": "ok",
+        "operation": "transfer",
+        "semantic_step": {
+          "id": "t4_sample",
+          "type": "transfer",
+          "source": "T3",
+          "dest": "T4",
+          "volume_ul": 500.0
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "t4_diluent",
+        "status": "ok",
+        "operation": "transfer",
+        "semantic_step": {
+          "id": "t4_diluent",
+          "type": "transfer",
+          "source": "diluent",
+          "dest": "T4",
+          "volume_ul": 500.0
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "mix_T4",
+        "status": "ok",
+        "operation": "mix",
+        "target": "T4",
+        "cycles": 3
+      },
+      {
+        "action_id": "observe_T1_attempt1",
+        "status": "ok",
+        "operation": "observe",
+        "retry_of": null,
+        "semantic_step": {
+          "id": "observe_T1",
+          "type": "observe",
+          "target": "T1"
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "move_T2_attempt1",
+        "status": "ok",
+        "operation": "move",
+        "retry_of": null,
+        "semantic_step": {
+          "id": "move_T2",
+          "type": "move",
+          "target": "T2"
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "observe_T3_attempt1",
+        "status": "ok",
+        "operation": "observe",
+        "retry_of": null,
+        "semantic_step": {
+          "id": "observe_T3",
+          "type": "observe",
+          "target": "T3"
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "observe_T4_attempt1",
+        "status": "ok",
+        "operation": "observe",
+        "retry_of": null,
+        "semantic_step": {
+          "id": "observe_T4",
+          "type": "observe",
+          "target": "T4"
+        },
+        "attempt": 1
+      },
+      {
+        "action_id": "measure_T1_1",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T1",
+        "repeat_index": 0
+      },
+      {
+        "action_id": "measure_T1_2",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T1",
+        "repeat_index": 1
+      },
+      {
+        "action_id": "measure_T1_3",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T1",
+        "repeat_index": 2
+      },
+      {
+        "action_id": "measure_T2_1",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T2",
+        "repeat_index": 0
+      },
+      {
+        "action_id": "measure_T2_2",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T2",
+        "repeat_index": 1
+      },
+      {
+        "action_id": "measure_T2_3",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T2",
+        "repeat_index": 2
+      },
+      {
+        "action_id": "measure_T3_1",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T3",
+        "repeat_index": 0
+      },
+      {
+        "action_id": "measure_T3_2",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T3",
+        "repeat_index": 1
+      },
+      {
+        "action_id": "measure_T3_3",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T3",
+        "repeat_index": 2
+      },
+      {
+        "action_id": "measure_T4_1",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T4",
+        "repeat_index": 0
+      },
+      {
+        "action_id": "measure_T4_2",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T4",
+        "repeat_index": 1
+      },
+      {
+        "action_id": "measure_T4_3",
+        "status": "ok",
+        "operation": "measure",
+        "target": "T4",
+        "repeat_index": 2
+      },
+      {
+        "action_id": "measure_blank_1",
+        "status": "ok",
+        "operation": "measure",
+        "target": "blank",
+        "repeat_index": 0
+      },
+      {
+        "action_id": "measure_blank_2",
+        "status": "ok",
+        "operation": "measure",
+        "target": "blank",
+        "repeat_index": 1
+      },
+      {
+        "action_id": "measure_blank_3",
+        "status": "ok",
+        "operation": "measure",
+        "target": "blank",
+        "repeat_index": 2
+      },
+      {
+        "action_id": "measure_standard_1",
+        "status": "ok",
+        "operation": "measure",
+        "target": "standard",
+        "repeat_index": 0
+      },
+      {
+        "action_id": "measure_standard_2",
+        "status": "ok",
+        "operation": "measure",
+        "target": "standard",
+        "repeat_index": 1
+      },
+      {
+        "action_id": "measure_standard_3",
+        "status": "ok",
+        "operation": "measure",
+        "target": "standard",
+        "repeat_index": 2
+      },
+      {
+        "status": "finished",
+        "action_id": "finish"
+      }
+    ],
+    "contamination": [],
+    "calibration": {
+      "p1000": {
+        "reference_volume_ul": 500.0,
+        "measured_volume_ul": 500.0,
+        "error_ul": 0.0
+      }
+    },
+    "penalties": [],
+    "primary_concentration_score": 89.9013,
+    "volume_auxiliary_score": 69.0033,
+    "quality_score": 100.0,
+    "base_score_before_gates": 88.8213,
+    "action_count": 37,
+    "instance_id": "default"
+  }
+}

@@ -1,0 +1,345 @@
+{
+  "instance_id": "default",
+  "actions": [
+    {
+      "type": "calibrate",
+      "action_id": "calibrate_p1000",
+      "pipette": "p1000",
+      "reference_volume_ul": 500.0,
+      "measured_volume_ul": 500.0
+    },
+    {
+      "type": "transfer",
+      "step_id": "t1_sample",
+      "action_id": "t1_sample",
+      "source": "stock",
+      "dest": "T1",
+      "volume_ul": 500.0,
+      "pipette": "p1000",
+      "tip_id": "t1_sample_tip"
+    },
+    {
+      "type": "transfer",
+      "step_id": "t1_diluent",
+      "action_id": "t1_diluent",
+      "source": "diluent",
+      "dest": "T1",
+      "volume_ul": 500.0,
+      "pipette": "p1000",
+      "tip_id": "t1_diluent_tip"
+    },
+    {
+      "type": "mix",
+      "action_id": "mix_T1",
+      "dest": "T1",
+      "volume_ul": 1000.0,
+      "cycles": 3
+    },
+    {
+      "type": "transfer",
+      "step_id": "t2_sample",
+      "action_id": "t2_sample_attempt1",
+      "source": "T1",
+      "dest": "T2",
+      "volume_ul": 500.0,
+      "pipette": "p1000",
+      "tip_id": "t2_sample_tip"
+    },
+    {
+      "type": "transfer",
+      "step_id": "t2_sample",
+      "action_id": "t2_sample_retry",
+      "retry_of": "t2_sample_attempt1",
+      "source": "T1",
+      "dest": "T2",
+      "volume_ul": 500.0,
+      "pipette": "p1000",
+      "tip_id": "t2_sample_retry_tip"
+    },
+    {
+      "type": "transfer",
+      "step_id": "t2_diluent",
+      "action_id": "t2_diluent",
+      "source": "diluent",
+      "dest": "T2",
+      "volume_ul": 500.0,
+      "pipette": "p1000",
+      "tip_id": "t2_diluent_tip"
+    },
+    {
+      "type": "mix",
+      "action_id": "mix_T2",
+      "dest": "T2",
+      "volume_ul": 1000.0,
+      "cycles": 3
+    },
+    {
+      "type": "transfer",
+      "step_id": "t3_sample",
+      "action_id": "t3_sample",
+      "source": "T2",
+      "dest": "T3",
+      "volume_ul": 500.0,
+      "pipette": "p1000",
+      "tip_id": "t3_sample_tip"
+    },
+    {
+      "type": "transfer",
+      "step_id": "t3_diluent",
+      "action_id": "t3_diluent",
+      "source": "diluent",
+      "dest": "T3",
+      "volume_ul": 500.0,
+      "pipette": "p1000",
+      "tip_id": "t3_diluent_tip"
+    },
+    {
+      "type": "mix",
+      "action_id": "mix_T3",
+      "dest": "T3",
+      "volume_ul": 1000.0,
+      "cycles": 3
+    },
+    {
+      "type": "transfer",
+      "step_id": "t4_sample",
+      "action_id": "t4_sample",
+      "source": "T3",
+      "dest": "T4",
+      "volume_ul": 500.0,
+      "pipette": "p1000",
+      "tip_id": "t4_sample_tip"
+    },
+    {
+      "type": "transfer",
+      "step_id": "t4_diluent",
+      "action_id": "t4_diluent",
+      "source": "diluent",
+      "dest": "T4",
+      "volume_ul": 500.0,
+      "pipette": "p1000",
+      "tip_id": "t4_diluent_tip"
+    },
+    {
+      "type": "mix",
+      "action_id": "mix_T4",
+      "dest": "T4",
+      "volume_ul": 1000.0,
+      "cycles": 3
+    },
+    {
+      "type": "observe",
+      "step_id": "observe_T1",
+      "action_id": "observe_T1_attempt1",
+      "target": "T1"
+    },
+    {
+      "type": "move",
+      "step_id": "move_T2",
+      "action_id": "move_T2_attempt1",
+      "target": "T2"
+    },
+    {
+      "type": "observe",
+      "step_id": "observe_T3",
+      "action_id": "observe_T3_attempt1",
+      "target": "T3"
+    },
+    {
+      "type": "observe",
+      "step_id": "observe_T4",
+      "action_id": "observe_T4_attempt1",
+      "target": "T4"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T1_1",
+      "target": "T1",
+      "measurement_id": "T1_m1"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T1_2",
+      "target": "T1",
+      "measurement_id": "T1_m2"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T1_3",
+      "target": "T1",
+      "measurement_id": "T1_m3"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T2_1",
+      "target": "T2",
+      "measurement_id": "T2_m1"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T2_2",
+      "target": "T2",
+      "measurement_id": "T2_m2"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T2_3",
+      "target": "T2",
+      "measurement_id": "T2_m3"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T3_1",
+      "target": "T3",
+      "measurement_id": "T3_m1"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T3_2",
+      "target": "T3",
+      "measurement_id": "T3_m2"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T3_3",
+      "target": "T3",
+      "measurement_id": "T3_m3"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T4_1",
+      "target": "T4",
+      "measurement_id": "T4_m1"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T4_2",
+      "target": "T4",
+      "measurement_id": "T4_m2"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_T4_3",
+      "target": "T4",
+      "measurement_id": "T4_m3"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_blank_1",
+      "target": "blank",
+      "measurement_id": "blank_m1"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_blank_2",
+      "target": "blank",
+      "measurement_id": "blank_m2"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_blank_3",
+      "target": "blank",
+      "measurement_id": "blank_m3"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_standard_1",
+      "target": "standard",
+      "measurement_id": "standard_m1"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_standard_2",
+      "target": "standard",
+      "measurement_id": "standard_m2"
+    },
+    {
+      "type": "measure",
+      "action_id": "measure_standard_3",
+      "target": "standard",
+      "measurement_id": "standard_m3"
+    },
+    {
+      "type": "finish",
+      "action_id": "finish"
+    }
+  ],
+  "report": {
+    "samples": [
+      {
+        "name": "T1",
+        "measurements_ul": [
+          499.579875,
+          503.430475,
+          501.634417
+        ],
+        "mean_volume_ul": 501.548256,
+        "volume_error_ul": 1.680983,
+        "measurement_error_ul": -0.132727,
+        "volume_sd_ul": 1.573181,
+        "estimated_concentration_um": 501.170201,
+        "estimated_concentration_error_fraction": 0.00234
+      },
+      {
+        "name": "T2",
+        "measurements_ul": [
+          500.749297,
+          499.953183,
+          499.74192
+        ],
+        "mean_volume_ul": 500.148133,
+        "volume_error_ul": 0.468327,
+        "measurement_error_ul": -0.320193,
+        "volume_sd_ul": 0.433749,
+        "estimated_concentration_um": 250.201738,
+        "estimated_concentration_error_fraction": 0.000807
+      },
+      {
+        "name": "T3",
+        "measurements_ul": [
+          496.232401,
+          496.643889,
+          496.772784
+        ],
+        "mean_volume_ul": 496.549691,
+        "volume_error_ul": -3.499244,
+        "measurement_error_ul": 0.048935,
+        "volume_sd_ul": 0.230446,
+        "estimated_concentration_um": 124.828969,
+        "estimated_concentration_error_fraction": 0.001368
+      },
+      {
+        "name": "T4",
+        "measurements_ul": [
+          1000.450535,
+          1001.623405,
+          1001.901826
+        ],
+        "mean_volume_ul": 1001.325255,
+        "volume_error_ul": 0.550787,
+        "measurement_error_ul": 0.774468,
+        "volume_sd_ul": 0.628878,
+        "estimated_concentration_um": 62.418698,
+        "estimated_concentration_error_fraction": 0.001301
+      }
+    ],
+    "standard": {
+      "measurements_ul": [
+        600.711708,
+        598.938681,
+        600.137889
+      ],
+      "mean_volume_ul": 599.929426,
+      "volume_sd_ul": 0.738692
+    },
+    "blank": {
+      "measurements_ul": [
+        600.37746,
+        598.926859,
+        599.570139
+      ],
+      "mean_volume_ul": 599.624819,
+      "volume_sd_ul": 0.593466
+    }
+  }
+}

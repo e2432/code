@@ -1,0 +1,36 @@
+{"action_id": "t1_sample", "status": "ok", "operation": "transfer", "semantic_step": {"id": "t1_sample", "type": "transfer", "source": "stock", "dest": "T1", "volume_ul": 500.0}, "attempt": 1}
+{"action_id": "t1_diluent", "status": "ok", "operation": "transfer", "semantic_step": {"id": "t1_diluent", "type": "transfer", "source": "diluent", "dest": "T1", "volume_ul": 500.0}, "attempt": 1}
+{"action_id": "mix_T1", "status": "ok", "operation": "mix", "target": "T1", "cycles": 3}
+{"action_id": "t2_sample_attempt1", "status": "failed", "reason": "temporary_pipette_failure", "semantic_step": {"id": "t2_sample", "type": "transfer", "source": "T1", "dest": "T2", "volume_ul": 500.0}, "attempt": 1}
+{"action_id": "t2_sample_retry", "status": "ok", "operation": "transfer", "semantic_step": {"id": "t2_sample", "type": "transfer", "source": "T1", "dest": "T2", "volume_ul": 500.0}, "attempt": 2}
+{"action_id": "t2_diluent", "status": "ok", "operation": "transfer", "semantic_step": {"id": "t2_diluent", "type": "transfer", "source": "diluent", "dest": "T2", "volume_ul": 500.0}, "attempt": 1}
+{"action_id": "mix_T2", "status": "ok", "operation": "mix", "target": "T2", "cycles": 3}
+{"action_id": "t3_sample", "status": "ok", "operation": "transfer", "semantic_step": {"id": "t3_sample", "type": "transfer", "source": "T2", "dest": "T3", "volume_ul": 500.0}, "attempt": 1}
+{"action_id": "t3_diluent", "status": "ok", "operation": "transfer", "semantic_step": {"id": "t3_diluent", "type": "transfer", "source": "diluent", "dest": "T3", "volume_ul": 500.0}, "attempt": 1}
+{"action_id": "mix_T3", "status": "ok", "operation": "mix", "target": "T3", "cycles": 3}
+{"action_id": "t4_sample", "status": "ok", "operation": "transfer", "semantic_step": {"id": "t4_sample", "type": "transfer", "source": "T3", "dest": "T4", "volume_ul": 500.0}, "attempt": 1}
+{"action_id": "t4_diluent", "status": "ok", "operation": "transfer", "semantic_step": {"id": "t4_diluent", "type": "transfer", "source": "diluent", "dest": "T4", "volume_ul": 500.0}, "attempt": 1}
+{"action_id": "mix_T4", "status": "ok", "operation": "mix", "target": "T4", "cycles": 3}
+{"action_id": "observe_T1_attempt1", "status": "ok", "operation": "observe", "retry_of": null, "semantic_step": {"id": "observe_T1", "type": "observe", "target": "T1"}, "attempt": 1}
+{"action_id": "move_T2_attempt1", "status": "ok", "operation": "move", "retry_of": null, "semantic_step": {"id": "move_T2", "type": "move", "target": "T2"}, "attempt": 1}
+{"action_id": "observe_T3_attempt1", "status": "ok", "operation": "observe", "retry_of": null, "semantic_step": {"id": "observe_T3", "type": "observe", "target": "T3"}, "attempt": 1}
+{"action_id": "observe_T4_attempt1", "status": "ok", "operation": "observe", "retry_of": null, "semantic_step": {"id": "observe_T4", "type": "observe", "target": "T4"}, "attempt": 1}
+{"action_id": "measure_T1_1", "status": "ok", "operation": "measure", "target": "T1", "repeat_index": 0}
+{"action_id": "measure_T1_2", "status": "ok", "operation": "measure", "target": "T1", "repeat_index": 1}
+{"action_id": "measure_T1_3", "status": "ok", "operation": "measure", "target": "T1", "repeat_index": 2}
+{"action_id": "measure_T2_1", "status": "ok", "operation": "measure", "target": "T2", "repeat_index": 0}
+{"action_id": "measure_T2_2", "status": "ok", "operation": "measure", "target": "T2", "repeat_index": 1}
+{"action_id": "measure_T2_3", "status": "ok", "operation": "measure", "target": "T2", "repeat_index": 2}
+{"action_id": "measure_T3_1", "status": "ok", "operation": "measure", "target": "T3", "repeat_index": 0}
+{"action_id": "measure_T3_2", "status": "ok", "operation": "measure", "target": "T3", "repeat_index": 1}
+{"action_id": "measure_T3_3", "status": "ok", "operation": "measure", "target": "T3", "repeat_index": 2}
+{"action_id": "measure_T4_1", "status": "ok", "operation": "measure", "target": "T4", "repeat_index": 0}
+{"action_id": "measure_T4_2", "status": "ok", "operation": "measure", "target": "T4", "repeat_index": 1}
+{"action_id": "measure_T4_3", "status": "ok", "operation": "measure", "target": "T4", "repeat_index": 2}
+{"action_id": "measure_blank_1", "status": "ok", "operation": "measure", "target": "blank", "repeat_index": 0}
+{"action_id": "measure_blank_2", "status": "ok", "operation": "measure", "target": "blank", "repeat_index": 1}
+{"action_id": "measure_blank_3", "status": "ok", "operation": "measure", "target": "blank", "repeat_index": 2}
+{"action_id": "measure_standard_1", "status": "ok", "operation": "measure", "target": "standard", "repeat_index": 0}
+{"action_id": "measure_standard_2", "status": "ok", "operation": "measure", "target": "standard", "repeat_index": 1}
+{"action_id": "measure_standard_3", "status": "ok", "operation": "measure", "target": "standard", "repeat_index": 2}
+{"status": "finished", "action_id": "finish"}

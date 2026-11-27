@@ -1,0 +1,186 @@
+{
+  "type": "object",
+  "required": [
+    "status",
+    "score"
+  ],
+  "properties": {
+    "status": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "score": {
+      "type": [
+        "number",
+        "null"
+      ],
+      "minimum": 0,
+      "maximum": 100
+    },
+    "raw": {
+      "type": "object"
+    },
+    "target_exceeded": {
+      "type": "boolean"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "error": {
+      "type": "object",
+      "required": [
+        "code",
+        "message"
+      ],
+      "properties": {
+        "code": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "evaluated"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "score": {
+            "type": "number"
+          }
+        },
+        "not": {
+          "required": [
+            "error"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "invalid_submission"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "score": {
+            "const": 0
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "evaluation_error"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "score": {
+            "type": "null"
+          }
+        },
+        "required": [
+          "error"
+        ]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "pending_review"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "score": {
+            "type": "null"
+          }
+        },
+        "not": {
+          "required": [
+            "error"
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "invalid_submission",
+              "evaluation_error",
+              "pending_review"
+            ]
+          }
+        }
+      },
+      "then": {
+        "not": {
+          "anyOf": [
+            {
+              "required": [
+                "raw"
+              ]
+            },
+            {
+              "required": [
+                "target_exceeded"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "target_exceeded"
+        ],
+        "properties": {
+          "target_exceeded": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "status": {
+            "const": "evaluated"
+          },
+          "score": {
+            "const": 100
+          }
+        }
+      }
+    }
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AFE 1.0 result",
+  "description": "已知状态按条件约束；扩展字段开放。跨文件一致性由校验工具检查。"
+}

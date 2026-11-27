@@ -1,0 +1,75 @@
+{
+  "schema_version": "1.2",
+  "task_title": "",
+  "task_version": "",
+  "original_level": "",
+  "summary": "",
+  "recommendation": "",
+  "coverage": {
+    "read": [],
+    "not_verified": []
+  },
+  "format_notes": [],
+  "content": [
+    {
+      "id": "C1",
+      "score": null,
+      "evidence": [],
+      "reason": "",
+      "action": ""
+    },
+    {
+      "id": "C2",
+      "score": null,
+      "evidence": [],
+      "reason": "",
+      "action": ""
+    },
+    {
+      "id": "C3",
+      "score": null,
+      "evidence": [],
+      "reason": "",
+      "action": ""
+    },
+    {
+      "id": "C4",
+      "score": null,
+      "evidence": [],
+      "reason": "",
+      "action": ""
+    },
+    {
+      "id": "C5",
+      "score": null,
+      "evidence": [],
+      "reason": "",
+      "action": ""
+    },
+    {
+      "id": "C6",
+      "score": null,
+      "evidence": [],
+      "reason": "",
+      "action": ""
+    },
+    {
+      "id": "C7",
+      "score": null,
+      "evidence": [],
+      "reason": "",
+      "action": ""
+    },
+    {
+      "id": "C8",
+      "score": null,
+      "evidence": [],
+      "reason": "",
+      "action": ""
+    }
+  ],
+  "reference_solution": {
+    "provided": false
+  },
+  "issues": []
+}

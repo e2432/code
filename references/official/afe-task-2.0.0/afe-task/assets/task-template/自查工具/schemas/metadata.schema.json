@@ -1,0 +1,92 @@
+{
+  "type": "object",
+  "required": [
+    "protocol_version",
+    "level",
+    "domains",
+    "supports_over_target",
+    "score_mapping"
+  ],
+  "properties": {
+    "protocol_version": {
+      "const": "1.0"
+    },
+    "level": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "domains": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "生命",
+          "化学",
+          "材料",
+          "物理",
+          "天文",
+          "地球",
+          "能源",
+          "信息",
+          "神经科学",
+          "医学",
+          "数学"
+        ]
+      }
+    },
+    "supports_over_target": {
+      "type": "boolean"
+    },
+    "score_mapping": {
+      "type": "object",
+      "required": [
+        "url",
+        "description"
+      ],
+      "properties": {
+        "url": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    },
+    "reference_urls": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "pattern": "\\S"
+      }
+    },
+    "validation": {
+      "type": "object",
+      "required": [
+        "command",
+        "description"
+      ],
+      "properties": {
+        "command": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "\\S"
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AFE 1.0 metadata",
+  "description": "已知状态按条件约束；扩展字段开放。跨文件一致性由校验工具检查。"
+}

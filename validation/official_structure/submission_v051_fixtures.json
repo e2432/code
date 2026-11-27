@@ -1,0 +1,614 @@
+{
+  "schema_version": "1.0",
+  "rule_version": "2.0.0",
+  "profile": "afe-contract-1.0",
+  "generated_at": "2026-11-27T07:11:24.191291+00:00",
+  "package_root": "E:\\project code\\Agent Frontier Exam 共建指南\\task_package",
+  "task_id": "task_package",
+  "mode": "static-only",
+  "groups": [
+    {
+      "id": "F1",
+      "name": "必需结构与入口",
+      "status": "提醒",
+      "counts": {
+        "通过": 5,
+        "提醒": 1
+      }
+    },
+    {
+      "id": "F2",
+      "name": "配置可解析与字段规范",
+      "status": "通过",
+      "counts": {
+        "通过": 17
+      }
+    },
+    {
+      "id": "F3",
+      "name": "agent/verifier配置边界",
+      "status": "通过",
+      "counts": {
+        "通过": 3
+      }
+    },
+    {
+      "id": "F4",
+      "name": "文件引用与入口契约",
+      "status": "待核实",
+      "counts": {
+        "通过": 5,
+        "待核实": 3
+      }
+    },
+    {
+      "id": "F5",
+      "name": "依赖、数据与版本声明",
+      "status": "待核实",
+      "counts": {
+        "通过": 4,
+        "待核实": 2
+      }
+    },
+    {
+      "id": "F6",
+      "name": "可见范围与工程卫生线索",
+      "status": "提醒",
+      "counts": {
+        "提醒": 1
+      }
+    },
+    {
+      "id": "F7",
+      "name": "Harbor lint",
+      "status": "待核实",
+      "counts": {
+        "待核实": 1
+      }
+    }
+  ],
+  "checks": [
+    {
+      "id": "F2.parse",
+      "group": "F2",
+      "status": "通过",
+      "reason": "TOML可解析",
+      "evidence": [
+        "task.toml"
+      ]
+    },
+    {
+      "id": "F2.schema",
+      "group": "F2",
+      "status": "通过",
+      "reason": "项目约定schema_version为字符串1.4",
+      "evidence": [
+        "task.toml:schema_version"
+      ]
+    },
+    {
+      "id": "F2.section",
+      "group": "F2",
+      "status": "通过",
+      "reason": "应存在TOML段：task",
+      "evidence": [
+        "task.toml:[task]"
+      ]
+    },
+    {
+      "id": "F2.section",
+      "group": "F2",
+      "status": "通过",
+      "reason": "应存在TOML段：metadata",
+      "evidence": [
+        "task.toml:[metadata]"
+      ]
+    },
+    {
+      "id": "F2.section",
+      "group": "F2",
+      "status": "通过",
+      "reason": "应存在TOML段：verifier",
+      "evidence": [
+        "task.toml:[verifier]"
+      ]
+    },
+    {
+      "id": "F2.section",
+      "group": "F2",
+      "status": "通过",
+      "reason": "应存在TOML段：agent",
+      "evidence": [
+        "task.toml:[agent]"
+      ]
+    },
+    {
+      "id": "F2.section",
+      "group": "F2",
+      "status": "通过",
+      "reason": "应存在TOML段：environment",
+      "evidence": [
+        "task.toml:[environment]"
+      ]
+    },
+    {
+      "id": "F2.name",
+      "group": "F2",
+      "status": "通过",
+      "reason": "AFE指南约定task.name为afe/<科学任务名>；这是项目命名要求",
+      "evidence": [
+        "task.toml:task.name"
+      ]
+    },
+    {
+      "id": "F2.directory",
+      "group": "F2",
+      "status": "通过",
+      "reason": "目录建议仅用小写字母、数字、下划线和短横线；不强令其等于task.name",
+      "evidence": [
+        "任务目录名"
+      ]
+    },
+    {
+      "id": "F2.resource",
+      "group": "F2",
+      "status": "通过",
+      "reason": "资源/时间须为有限正数；不判断科学预算是否足够",
+      "evidence": [
+        "task.toml:verifier.timeout_sec"
+      ]
+    },
+    {
+      "id": "F2.resource",
+      "group": "F2",
+      "status": "通过",
+      "reason": "资源/时间须为有限正数；不判断科学预算是否足够",
+      "evidence": [
+        "task.toml:agent.timeout_sec"
+      ]
+    },
+    {
+      "id": "F2.resource",
+      "group": "F2",
+      "status": "通过",
+      "reason": "资源/时间须为有限正数；不判断科学预算是否足够",
+      "evidence": [
+        "task.toml:environment.build_timeout_sec"
+      ]
+    },
+    {
+      "id": "F2.resource",
+      "group": "F2",
+      "status": "通过",
+      "reason": "资源/时间须为有限正数；不判断科学预算是否足够",
+      "evidence": [
+        "task.toml:environment.cpus"
+      ]
+    },
+    {
+      "id": "F2.resource",
+      "group": "F2",
+      "status": "通过",
+      "reason": "资源/时间须为有限正数；不判断科学预算是否足够",
+      "evidence": [
+        "task.toml:environment.memory_mb"
+      ]
+    },
+    {
+      "id": "F2.resource",
+      "group": "F2",
+      "status": "通过",
+      "reason": "资源/时间须为有限正数；不判断科学预算是否足够",
+      "evidence": [
+        "task.toml:environment.storage_mb"
+      ]
+    },
+    {
+      "id": "F2.resource",
+      "group": "F2",
+      "status": "通过",
+      "reason": "资源/时间须为有限非负数；不判断科学预算是否足够",
+      "evidence": [
+        "task.toml:environment.gpus"
+      ]
+    },
+    {
+      "id": "F2.metadata",
+      "group": "F2",
+      "status": "通过",
+      "reason": "AFE 1.0 元信息类型与必填项符合约定",
+      "evidence": [
+        "task.toml:[metadata.afe]"
+      ]
+    },
+    {
+      "id": "F3.separate",
+      "group": "F3",
+      "status": "通过",
+      "reason": "AFE要求verifier.environment_mode=separate",
+      "evidence": [
+        "task.toml:verifier.environment_mode"
+      ]
+    },
+    {
+      "id": "F3.artifacts",
+      "group": "F3",
+      "status": "通过",
+      "reason": "artifacts应为非空列表，条目可为绝对容器路径或含 source/可选 service 的对象",
+      "evidence": [
+        "task.toml:artifacts"
+      ]
+    },
+    {
+      "id": "F3.network",
+      "group": "F3",
+      "status": "通过",
+      "reason": "verifier网络须与依赖一致；指南默认no-network，例外需说明",
+      "evidence": [
+        "task.toml:verifier.environment.network_mode"
+      ]
+    },
+    {
+      "id": "F1.required",
+      "group": "F1",
+      "status": "通过",
+      "reason": "必需file存在",
+      "evidence": [
+        "task.toml"
+      ]
+    },
+    {
+      "id": "F1.required",
+      "group": "F1",
+      "status": "通过",
+      "reason": "必需file存在",
+      "evidence": [
+        "instruction.md"
+      ]
+    },
+    {
+      "id": "F1.required",
+      "group": "F1",
+      "status": "通过",
+      "reason": "必需file存在",
+      "evidence": [
+        "tests/test.sh"
+      ]
+    },
+    {
+      "id": "F1.required",
+      "group": "F1",
+      "status": "通过",
+      "reason": "必需file存在",
+      "evidence": [
+        "environment/Dockerfile"
+      ]
+    },
+    {
+      "id": "F1.required",
+      "group": "F1",
+      "status": "通过",
+      "reason": "必需file存在",
+      "evidence": [
+        "tests/Dockerfile"
+      ]
+    },
+    {
+      "id": "F5.image",
+      "group": "F5",
+      "status": "通过",
+      "reason": "声明了tag或digest，未联网验证镜像",
+      "evidence": [
+        "environment/Dockerfile:逻辑行1"
+      ]
+    },
+    {
+      "id": "F4.copy_source",
+      "group": "F4",
+      "status": "通过",
+      "reason": "按记录的构建上下文核对，来源存在；dockerignore语义另审",
+      "evidence": [
+        "environment/Dockerfile:逻辑行3",
+        "environment\\input"
+      ]
+    },
+    {
+      "id": "F4.copy_source",
+      "group": "F4",
+      "status": "通过",
+      "reason": "按记录的构建上下文核对，来源存在；dockerignore语义另审",
+      "evidence": [
+        "environment/Dockerfile:逻辑行4",
+        "environment\\tools"
+      ]
+    },
+    {
+      "id": "F4.build_context",
+      "group": "F4",
+      "status": "待核实",
+      "reason": "额外Dockerfile的真实构建上下文未确定；阅读Compose/构建声明后用--build-context指定，不按文件所在目录猜测",
+      "evidence": [
+        "environment\\Dockerfile"
+      ]
+    },
+    {
+      "id": "F5.image",
+      "group": "F5",
+      "status": "通过",
+      "reason": "声明了tag或digest，未联网验证镜像",
+      "evidence": [
+        "environment\\Dockerfile:逻辑行1"
+      ]
+    },
+    {
+      "id": "F5.image",
+      "group": "F5",
+      "status": "通过",
+      "reason": "声明了tag或digest，未联网验证镜像",
+      "evidence": [
+        "tests/Dockerfile:逻辑行1"
+      ]
+    },
+    {
+      "id": "F4.copy_source",
+      "group": "F4",
+      "status": "通过",
+      "reason": "按记录的构建上下文核对，来源存在；dockerignore语义另审",
+      "evidence": [
+        "tests/Dockerfile:逻辑行3",
+        "tests"
+      ]
+    },
+    {
+      "id": "F4.build_context",
+      "group": "F4",
+      "status": "待核实",
+      "reason": "额外Dockerfile的真实构建上下文未确定；阅读Compose/构建声明后用--build-context指定，不按文件所在目录猜测",
+      "evidence": [
+        "tests\\Dockerfile"
+      ]
+    },
+    {
+      "id": "F5.image",
+      "group": "F5",
+      "status": "通过",
+      "reason": "声明了tag或digest，未联网验证镜像",
+      "evidence": [
+        "tests\\Dockerfile:逻辑行1"
+      ]
+    },
+    {
+      "id": "F1.scorer",
+      "group": "F1",
+      "status": "提醒",
+      "reason": "未识别独立评分脚本，可能是test.sh内嵌或模块实现",
+      "evidence": [
+        "tests/test.sh"
+      ]
+    },
+    {
+      "id": "F4.reward",
+      "group": "F4",
+      "status": "待核实",
+      "reason": "未静态识别reward接口，需跟踪实际评分逻辑",
+      "evidence": [
+        "tests/"
+      ]
+    },
+    {
+      "id": "F5.provenance",
+      "group": "F5",
+      "status": "待核实",
+      "reason": "任务目录内未定位溯源文件；核对已提供的网页信息或包外补充材料，不强制authoring目录",
+      "evidence": [
+        "任务目录扫描范围；不含包外补充材料或网页"
+      ]
+    },
+    {
+      "id": "F5.evidence",
+      "group": "F5",
+      "status": "待核实",
+      "reason": "未发现常见命名的记录，可核对补充材料中的验证记录；提议可尚未验证",
+      "evidence": [
+        "任务目录扫描范围"
+      ]
+    },
+    {
+      "id": "F4.afe_resource",
+      "group": "F4",
+      "status": "通过",
+      "reason": "声明的包内资源存在；实际使用由内容审核确认",
+      "evidence": [
+        "tests/score.py"
+      ]
+    },
+    {
+      "id": "F4.afe_result",
+      "group": "F4",
+      "status": "通过",
+      "reason": "所附结果结构符合约定；不证明本轮运行成功",
+      "evidence": [
+        "tests\\fixtures\\afe_result.json"
+      ]
+    },
+    {
+      "id": "F6.coverage",
+      "group": "F6",
+      "status": "提醒",
+      "reason": "遍历不等于正文全查；未读取范围见coverage.skipped与content_not_scanned，不因此认定题包异常",
+      "evidence": [
+        "扫描记录"
+      ]
+    },
+    {
+      "id": "F7.lint",
+      "group": "F7",
+      "status": "待核实",
+      "reason": "本机无Harbor命令；指定版本lint未执行，可核对已有记录",
+      "evidence": [
+        "工具环境"
+      ]
+    }
+  ],
+  "coverage": {
+    "entries_seen": 25,
+    "regular_files_seen": 19,
+    "walk_complete": true,
+    "text_bytes_read": 96094,
+    "read_files": [
+      {
+        "path": "task.toml",
+        "bytes": 1102,
+        "sha256": "4a8a72a937e04e88517233081f4738bee12a14afb01b96ef2373470de1d3f1a1"
+      },
+      {
+        "path": "environment/Dockerfile",
+        "bytes": 157,
+        "sha256": "32c52b127d87c861800ffa312d006f1bc689bfc266f751cfbd0a96ed008789af"
+      },
+      {
+        "path": "environment\\Dockerfile",
+        "bytes": 157,
+        "sha256": "32c52b127d87c861800ffa312d006f1bc689bfc266f751cfbd0a96ed008789af"
+      },
+      {
+        "path": "tests/Dockerfile",
+        "bytes": 80,
+        "sha256": "9fca0653e809fc579dc5bac93ed327c5894549b313a949c1494d987b22f4f440"
+      },
+      {
+        "path": "tests\\Dockerfile",
+        "bytes": 80,
+        "sha256": "9fca0653e809fc579dc5bac93ed327c5894549b313a949c1494d987b22f4f440"
+      },
+      {
+        "path": "environment\\input\\protocol.json",
+        "bytes": 5789,
+        "sha256": "1bc277eac43c2c4cd11a6078e0b181fb6f072f5c383f59c7fefaa10772f73e06"
+      },
+      {
+        "path": "environment\\input\\references\\AFE_protocol_notes.md",
+        "bytes": 1220,
+        "sha256": "5be2e7a55650193c14e3dafe514a76b8ec021eae35e8a020f301a53f19449e81"
+      },
+      {
+        "path": "environment\\input\\references\\AutoBio_simulation_tutorial.md",
+        "bytes": 13197,
+        "sha256": "b9078323ce28c27f83b1ae2da10c36de6a9081b2dbc066cace12efe0ae2aa256"
+      },
+      {
+        "path": "environment\\input\\references\\agent_completion_checklist.md",
+        "bytes": 485,
+        "sha256": "445af9c8fd55e75a0bde582d761534c5edca04db515bae9f5151a5f2a2e9107f"
+      },
+      {
+        "path": "environment\\tools\\check_submission.py",
+        "bytes": 4351,
+        "sha256": "ae0a4af3646a71980cc17d1a0b669173a55da1f37d99a0052d1fcddffe94e738"
+      },
+      {
+        "path": "environment\\tools\\feedback.py",
+        "bytes": 11286,
+        "sha256": "91ecfba4630c36a375732dbe62e502c034de2b60a839a8604865f3ceac905ad7"
+      },
+      {
+        "path": "environment\\tools\\progress.py",
+        "bytes": 894,
+        "sha256": "65222e25cb8307755a262ce4f09b2bef7f22697a3ac33d161fb8b715154de35e"
+      },
+      {
+        "path": "instruction.md",
+        "bytes": 6196,
+        "sha256": "833e646d86f211d479a323ae3cfb0f6a2a2bc93054aebfe0d30373a48de93114"
+      },
+      {
+        "path": "tests\\fixtures\\afe_result.json",
+        "bytes": 11216,
+        "sha256": "aec98cd3c5925826ef84cbbab4fa15685fc9aac3ac46fab4fbcd88e195620c11"
+      },
+      {
+        "path": "tests\\fixtures\\reward.json",
+        "bytes": 19,
+        "sha256": "0ab187f49d022e78951a4bde4eafe81baa57af0c9bd909d60c1e11db0792340c"
+      },
+      {
+        "path": "tests\\fixtures\\valid_progress.json",
+        "bytes": 703,
+        "sha256": "88f95cac9b948b67b5dc487f6fc8b5ff3de554cfe412212d521746e155c8b147"
+      },
+      {
+        "path": "tests\\fixtures\\valid_run_state.json",
+        "bytes": 60,
+        "sha256": "dfcb731ba414b417f3c1eb14e6166a7ed1c6766e53fd357f14819191f57b4c9b"
+      },
+      {
+        "path": "tests\\fixtures\\valid_submission.json",
+        "bytes": 8202,
+        "sha256": "47328a0bce2cc9125f85d9ecc8e6512aa79386939a605237bb507028571349e5"
+      },
+      {
+        "path": "tests\\score.py",
+        "bytes": 30858,
+        "sha256": "ff11364a3260ee5e9ab32509d59e084088679e3e91765d99ba36ed664d32ccf3"
+      },
+      {
+        "path": "tests\\test.sh",
+        "bytes": 42,
+        "sha256": "38555e2a0ff1bb56b6388ee1d8dfb5896ad06cf00d6baeb811216639c066daec"
+      }
+    ],
+    "skipped": [],
+    "content_not_scanned": [
+      {
+        "path": "tests\\fixtures\\events.jsonl",
+        "reason": "文件类型未纳入自动文本扫描；按需人工检查元数据/小样本"
+      }
+    ],
+    "dockerfiles_checked": [
+      {
+        "path": "environment/Dockerfile",
+        "build_context": "environment",
+        "context_source": "AFE主目录约定或调用者根据构建声明指定"
+      },
+      {
+        "path": "environment\\Dockerfile",
+        "build_context": null,
+        "context_source": "未确定"
+      },
+      {
+        "path": "tests/Dockerfile",
+        "build_context": "tests",
+        "context_source": "AFE主目录约定或调用者根据构建声明指定"
+      },
+      {
+        "path": "tests\\Dockerfile",
+        "build_context": null,
+        "context_source": "未确定"
+      }
+    ],
+    "evidence_candidates": [],
+    "limits": {
+      "max_entries": 12000,
+      "max_text_bytes": 524288,
+      "max_total_bytes": 8388608
+    },
+    "not_executed": [
+      "镜像构建",
+      "参考解",
+      "评分器",
+      "任务测试",
+      "Harbor lint",
+      "远程服务",
+      "大数据下载"
+    ]
+  },
+  "summary": {
+    "counts": {
+      "通过": 34,
+      "待核实": 6,
+      "提醒": 2
+    },
+    "has_failures": false,
+    "note": "结构事实与线索，不是科学正确性、运行成功或接收决定"
+  }
+}

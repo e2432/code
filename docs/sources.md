@@ -1,20 +1,20 @@
-# 来源与设计说明
+# 来源与材料说明
 
-## 任务包来源
+## 规范来源
 
-本任务包的液体状态、浓度计算和评分输入由任务作者设计，未直接打包外部数据集、私有实验数据或外部模型权重。
+- AFE 共建指南 v1.0，文件为 `docs/Agent Frontier Exam 共建指南.pdf`。它确定 AFE L1 任务包的目录结构、解题环境与评分环境隔离、交付接口和结果文件要求。
+- AFE task package template 1.0.1，协议版本为 1.0，Harbor 目标版本为 0.25.0。版本信息记录在 `references/official/AFE_task_package_template_v1.0.1/AFE_task_package_template/MANIFEST.json`。它影响 `task.toml`、Dockerfile、`tests/` 和 `environment/` 的组织方式。
+- `afe-task` skill 2.0.0，版本信息记录在 `references/official/afe-task-2.0.0/afe-task/MANIFEST.json`。它提供当前使用的结构自查工具和 AFE 契约检查规则。
 
-## 设计参考
+以上材料在 2026-11-27 核对。任务包中的评分模型、连续稀释协议、故障实例和报告字段由本项目自行设计。
 
-- AFE 共建指南用于确定任务包结构、L1 定位、独立评分接口和交付格式。
-- AutoBio 用于参考数字生物实验室中的机器人操作任务形式、轨迹记录和结果评估思路。
-- LabUtopia 用于参考科学实验室仿真、任务配置、机器人控制和科学具身 Agent 评测的组织方式。
+## 概念参考
 
-参考项目地址：
+- [AutoBio](https://github.com/autobio-bench/AutoBio) 参考科学实验室环境、机器人操作和轨迹记录的组织方式。
+- [LabUtopia](https://github.com/Rui-li023/LabUtopia) 参考实验室仿真、设备控制和科学 Agent 任务的组织方式。
 
-- https://github.com/autobio-bench/AutoBio
-- https://github.com/Rui-li023/LabUtopia
+这些项目只作为设计参考，没有复用其代码、模型权重、数据集或运行时依赖，也没有作为当前任务包的外部代码依赖。
 
-## 任务边界
+## 外部材料边界
 
-当前版本是一个可复现的模拟定量移液任务。它用于检验受约束的科学流程执行能力，不代表真实湿实验结果，也不要求 Agent 发现新的科学规律。
+当前提交包不包含外部数据集、模型权重或外部代码。标准库存液、移液误差、测量误差和故障计划均由 `protocol.json` 明确定义，用于可复现的合成仿真。

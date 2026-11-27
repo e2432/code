@@ -1,0 +1,47 @@
+schema_version = "1.4"
+artifacts = ["/work/output"]
+
+[task]
+name = "afe/prediction-interface-demo"
+version = "0.1.0"
+description = "仅演示文件交接和评分接口的合成预测题；请替换成真实科研任务"
+authors = [{ name = "AFE template example" }]
+keywords = ["synthetic-demo"]
+
+[metadata]
+example_only = true
+
+[metadata.afe]
+protocol_version = "1.0"
+level = "L1"
+domains = ["信息"]
+supports_over_target = true
+
+[metadata.afe.score_mapping]
+url = "tests/score.py"
+description = "仅为合成示例：平均绝对误差不高于 6 达标；20 映射为 0，6 映射为 100，其他区间线性并封顶。"
+
+[agent]
+timeout_sec = 300
+
+[environment]
+workdir = "/work"
+cpus = 1
+memory_mb = 1024
+storage_mb = 2048
+gpus = 0
+build_timeout_sec = 600
+network_mode = "no-network"
+
+[verifier]
+environment_mode = "separate"
+timeout_sec = 60
+
+[verifier.environment]
+workdir = "/tests"
+cpus = 1
+memory_mb = 1024
+storage_mb = 2048
+gpus = 0
+build_timeout_sec = 600
+network_mode = "no-network"

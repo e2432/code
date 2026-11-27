@@ -7,12 +7,12 @@
 | 阶段 | 状态 | 说明 |
 |---|---|---|
 | AFE L1 任务定义 | 已完成 | 目标、输入、输出、资源约束和验收标准已写入任务包 |
-| 抽象仿真器和评分器 | 已完成 | 支持多实例、三次重复测量、空白、标准样、校准、视觉和运动故障、混匀质量、污染和暂停复核 |
-| 远程服务器验证 | 已完成 | 在 `ailogin001.ihep.ac.cn` 上运行，结果为 `score=100`、`reward=1` |
+| 抽象仿真器和评分器 | 已完成 | 支持真实体积化学准确度、测量精密度、体积质控、step_id 故障注入、实例固定、事件/进度校验和安全暂停评分 |
+| 远程服务器验证 | v0.4.0 已完成 | v0.4.0 在 `ailogin001.ihep.ac.cn` 得到 `score=100`、`reward=1`；v0.5.1 已本地回归，远程待重跑 |
 | 教师审阅材料 | 已完成 | 已提供任务说明、来源说明、验证记录和审阅版压缩包 |
 | AutoBio/MuJoCo 场景接入 | 规划中 | 已完成搭建教程，尚未接入真实 MuJoCo 场景和机械臂观测 |
 
-当前版本为 `v0.4.0`。可运行任务包已经完成，AutoBio 仿真接入属于下一阶段。
+当前版本为 `v0.5.1`。可运行任务包已经完成，AutoBio 仿真接入属于下一阶段。
 
 ## 目录
 
@@ -22,17 +22,20 @@
 │   ├── task.toml                         # 任务和运行配置
 │   ├── instruction.md                    # Agent 读取的任务说明
 │   ├── environment/                      # 解题环境和输入协议
-│   └── tests/                             # 独立评分环境和评分程序
+│   └── tests/                             # 独立评分环境、评分程序和标准 fixture
+│       └── fixtures/                      # 可复现的标准提交、状态和事件记录
 ├── docs/
 │   ├── Agent Frontier Exam 共建指南.pdf  # AFE 共建指南
 │   ├── sources.md                        # 设计来源和材料说明
+│   ├── reproduction.md                   # 标准结果与 Docker 构建复现
 │   ├── validation_record.md               # 当前验证记录
-│   ├── remote_validation_record.md       # 远程服务器验证记录
 │   └── 仿真实验室搭建教程-AutoBio参考.md  # AutoBio/MuJoCo 接入教程
 └── dist/
-    ├── afe-serial-dilution-pipetting-v0.4.0.zip
-    └── afe-serial-dilution-pipetting-v0.4.0-teacher-review.zip
+    ├── afe-serial-dilution-pipetting-v0.5.1-submission.zip
+    └── afe-serial-dilution-pipetting-v0.5.1-teacher-review.zip
 ```
+
+正式提交包的 ZIP 根目录直接包含 `task_package/` 和 `supplementary/`；审阅包保留 `teacher_review/` 外层目录。打包时排除 `__pycache__/`、`.pyc` 和其他本地缓存。
 
 ## 任务摘要
 

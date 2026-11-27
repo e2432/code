@@ -1,0 +1,252 @@
+{
+  "version": "2.0.0",
+  "afe_protocol": "1.0",
+  "template_version": "1.0.1",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2639,
+      "sha256": "f9ffc756445624fa2df8e68f54c3ed40e218b4b0b1c1eb5610676a741950600e"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 3693,
+      "sha256": "e7670341e8addbd80b9dfe965a7d1189670066fb0c3c419326199d14804bef1a"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "bytes": 318,
+      "sha256": "e13f0df595dacd4dd9acbc0f22127d7f457a5041514a40e226971d8f40f14d24"
+    },
+    {
+      "path": "assets/assessment.template.json",
+      "bytes": 1211,
+      "sha256": "75356839cb82751844cdac13ca68ac7bbee6f828e431e512ecee5f6ab253ddc9"
+    },
+    {
+      "path": "assets/task-template/MANIFEST.json",
+      "bytes": 6104,
+      "sha256": "ac3a6f26c4f6b81b5c8c817bb89921aaea39c0f38d3e9ad9fdfcfec53704e0e5"
+    },
+    {
+      "path": "assets/task-template/task_package/environment/Dockerfile",
+      "bytes": 99,
+      "sha256": "b9eed1f91e5bd8459e8da35c16d7410ee2646910688fa9d15e222ba530e23326"
+    },
+    {
+      "path": "assets/task-template/task_package/environment/input/samples.csv",
+      "bytes": 33,
+      "sha256": "226945c51b3efe81e7983d02b7136b64fa9adb7f55f9dcb80b100d02763f3068"
+    },
+    {
+      "path": "assets/task-template/task_package/instruction.md",
+      "bytes": 1107,
+      "sha256": "6c25fdcef6c29ad682a7d931f3997dd4cec5875b4d66f2f83d265a04b29d4db7"
+    },
+    {
+      "path": "assets/task-template/task_package/task.toml",
+      "bytes": 999,
+      "sha256": "4694c4412cd957a676dc9f599baefd4533e004f7ee2f44966222214fe57a8732"
+    },
+    {
+      "path": "assets/task-template/task_package/tests/Dockerfile",
+      "bytes": 92,
+      "sha256": "02b4b9acbb95c1bf4633993380d24819f536d0fe3dc8efda54baed68c88fecf5"
+    },
+    {
+      "path": "assets/task-template/task_package/tests/afe_contract.py",
+      "bytes": 11355,
+      "sha256": "8be4d48a8a70611cf660957c03481341bad1e7a7392bd7599611fa154c674835"
+    },
+    {
+      "path": "assets/task-template/task_package/tests/score.py",
+      "bytes": 2506,
+      "sha256": "19e85901c00cc38626808d65899ae2211172c0bc9c42c9c7c302c7d99082a17c"
+    },
+    {
+      "path": "assets/task-template/task_package/tests/targets.csv",
+      "bytes": 35,
+      "sha256": "2935d6c217e6bec81bef35032de9f235a383112fbcd36b34bb74d2799835edda"
+    },
+    {
+      "path": "assets/task-template/task_package/tests/test.sh",
+      "bytes": 66,
+      "sha256": "2a29371f832b44bf132582935135c9d4d6e79d736319b35d92fc011d57f1c07e"
+    },
+    {
+      "path": "assets/task-template/共建指南.md",
+      "bytes": 22956,
+      "sha256": "8e6050edb75fbc7d7ab1655b653934204dbdff417a4ac607ef3fa0c1297ffe1f"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/environment/Dockerfile",
+      "bytes": 99,
+      "sha256": "f184b21cd16f984bdd20d371f99ef05855e88196b440288c435207e9e4682b14"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/environment/docker-compose.yaml",
+      "bytes": 449,
+      "sha256": "f36b941c0f372d69e21a6ee00fbe3a10fa923f87b0ad3643fe739f8517955547"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/environment/tools/validate.py",
+      "bytes": 575,
+      "sha256": "5026bdc12180b17914884f7fc6090a18d462810f37b328acb20821edc48d4ade"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/environment/validation_service/Dockerfile",
+      "bytes": 109,
+      "sha256": "9ce6302b6390a93f4b80a5ff50c18ce106f3bef2ced2c9e2f382ede23199b08b"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/environment/validation_service/export_state.py",
+      "bytes": 520,
+      "sha256": "c5da6c8f8fd0db0ecebeafc0a8b3c7dec644c1137ecb86088e6555a5ece034c5"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/environment/validation_service/private_data/values.json",
+      "bytes": 47,
+      "sha256": "028f74bcb50d2477eb636c60272ef2678865f2fcb9fbb9283657807fbe0cd13a"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/environment/validation_service/server.py",
+      "bytes": 1464,
+      "sha256": "52ae1616d66469419b38d5f78319d3a31c2dc71a919a931336d842a465c7f653"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/environment/validation_service/state.py",
+      "bytes": 1547,
+      "sha256": "30cf10c69756490987072c860ab165407888ff242108719bd019723287200beb"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/instruction.md",
+      "bytes": 1101,
+      "sha256": "400a96e6b7b588081a26866706743cb23c029c915b747f34d563d4cba2fd1c56"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/task.toml",
+      "bytes": 1355,
+      "sha256": "5df230134b835d8823e67d75e6abbcdc8f78d44062f0db591005d46a73422c41"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/tests/Dockerfile",
+      "bytes": 92,
+      "sha256": "02b4b9acbb95c1bf4633993380d24819f536d0fe3dc8efda54baed68c88fecf5"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/tests/afe_contract.py",
+      "bytes": 11355,
+      "sha256": "8be4d48a8a70611cf660957c03481341bad1e7a7392bd7599611fa154c674835"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/tests/score.py",
+      "bytes": 1864,
+      "sha256": "e4368e24a9ae5f5f4cf429d098c015d8a73a05f68f453bf1c797ab8ff229279e"
+    },
+    {
+      "path": "assets/task-template/可选示例/validation_task/tests/test.sh",
+      "bytes": 66,
+      "sha256": "2a29371f832b44bf132582935135c9d4d6e79d736319b35d92fc011d57f1c07e"
+    },
+    {
+      "path": "assets/task-template/可选示例/二分类评分.py",
+      "bytes": 299,
+      "sha256": "a3fa877514c5a36df21b7f917721345cdf1c198e32226a276f9735f607598b27"
+    },
+    {
+      "path": "assets/task-template/可选示例/参考方法/solution/method_a/info.json",
+      "bytes": 394,
+      "sha256": "2dfef6deb18d8730ba3baf4b815d9c5a6314d14a4d955766f58e47169dec81e0"
+    },
+    {
+      "path": "assets/task-template/平台接入/afe_contract.py",
+      "bytes": 11355,
+      "sha256": "8be4d48a8a70611cf660957c03481341bad1e7a7392bd7599611fa154c674835"
+    },
+    {
+      "path": "assets/task-template/平台接入/说明.md",
+      "bytes": 3105,
+      "sha256": "6018c5f690fcc141cfea39de704034014c6f365d068a91430ff6332a682b1979"
+    },
+    {
+      "path": "assets/task-template/研究目标与评价说明.md",
+      "bytes": 2560,
+      "sha256": "51426469fe91986ef7a3fc4123b700ccb449556216d495ac8b68ce41e8d1a115"
+    },
+    {
+      "path": "assets/task-template/自查工具/afe_contract.py",
+      "bytes": 11355,
+      "sha256": "8be4d48a8a70611cf660957c03481341bad1e7a7392bd7599611fa154c674835"
+    },
+    {
+      "path": "assets/task-template/自查工具/check_structure.py",
+      "bytes": 31487,
+      "sha256": "e3c84f8ecbdf0fc39fb3c5befa8d7ffc705093017dc325599a292cc8d4bdc157"
+    },
+    {
+      "path": "assets/task-template/自查工具/schemas/metadata.schema.json",
+      "bytes": 1860,
+      "sha256": "b2bab54ad07d3c08c345206bfb6edecd4d50ea840ebeb9492296e722c5a4424e"
+    },
+    {
+      "path": "assets/task-template/自查工具/schemas/reference.schema.json",
+      "bytes": 1040,
+      "sha256": "5adf2ab82a0fecd997059aa76df92458cd9c6e77b5240ec1ce65dcfdce72046d"
+    },
+    {
+      "path": "assets/task-template/自查工具/schemas/result.schema.json",
+      "bytes": 3250,
+      "sha256": "1093aff48207fbfb5d24527853633af6cd67a95ff78d835f058a13a0621f440e"
+    },
+    {
+      "path": "references/afe-contract.md",
+      "bytes": 3834,
+      "sha256": "e9bdc7b7dc00c6e452c0792f7e9c9f70d31a4de6feea63bef7733685947e71b6"
+    },
+    {
+      "path": "references/authoring.md",
+      "bytes": 6416,
+      "sha256": "926faf54f6a68ff9954e6e72903170bb963a56f28517f8e77a9666d05f46564c"
+    },
+    {
+      "path": "references/format-contract.md",
+      "bytes": 4409,
+      "sha256": "11b83fe8b34374612757ba5cca2cb3cf0fb791c80da494c70ec71850418bc30f"
+    },
+    {
+      "path": "references/report-contract.md",
+      "bytes": 3237,
+      "sha256": "a1dc02c49fb75ab030bd51dc110dae97f09914688ced834b772cee167783c505"
+    },
+    {
+      "path": "references/review.md",
+      "bytes": 6239,
+      "sha256": "8e56ced9f2ac1dcdbae58fc069249d6f8b89aa4c912d6a5bbe08897bf31e4b27"
+    },
+    {
+      "path": "references/rubric.md",
+      "bytes": 8300,
+      "sha256": "16bb3327d85edfc8a8a6f938341f8be29aacf485504a6b4ff4b5747c26d5a333"
+    },
+    {
+      "path": "references/task-type-checks.md",
+      "bytes": 6132,
+      "sha256": "90beaccded691c24b9534725b6d8e3ecb04ff8e204db624a72d38d3a3d1cebd6"
+    },
+    {
+      "path": "scripts/afe_contract.py",
+      "bytes": 11355,
+      "sha256": "8be4d48a8a70611cf660957c03481341bad1e7a7392bd7599611fa154c674835"
+    },
+    {
+      "path": "scripts/check_structure.py",
+      "bytes": 31487,
+      "sha256": "e3c84f8ecbdf0fc39fb3c5befa8d7ffc705093017dc325599a292cc8d4bdc157"
+    },
+    {
+      "path": "scripts/render_report.py",
+      "bytes": 11605,
+      "sha256": "623ef95740eeb59fe39e4e208786824809cccbb8b0e7d3ef70f37c52bbb40e29"
+    }
+  ]
+}

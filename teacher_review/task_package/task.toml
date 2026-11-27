@@ -1,0 +1,43 @@
+schema_version = "1.4"
+artifacts = ["/work/output"]
+
+[task]
+name = "afe/serial-dilution-pipetting"
+version = "0.5.1"
+description = "在含可复现移液误差、三次重复测量、标准样、校准、视觉和运动故障反馈及污染状态模型的模拟移液环境中完成四级连续稀释并提交实验质量记录"
+authors = [{ name = "AFE scientific embodied intelligence" }]
+
+[metadata.afe]
+protocol_version = "1.0"
+level = "L1"
+domains = ["化学"]
+supports_over_target = false
+
+[metadata.afe.score_mapping]
+url = "tests/score.py"
+description = "验证移液动作、体积守恒、目标浓度、吸头规则、污染和记录完整性，并映射为 0–100 分。"
+
+[agent]
+timeout_sec = 1800
+
+[environment]
+workdir = "/work"
+cpus = 2
+memory_mb = 2048
+storage_mb = 4096
+gpus = 0
+build_timeout_sec = 300
+network_mode = "no-network"
+
+[verifier]
+environment_mode = "separate"
+timeout_sec = 120
+
+[verifier.environment]
+workdir = "/tests"
+cpus = 1
+memory_mb = 1024
+storage_mb = 2048
+gpus = 0
+build_timeout_sec = 300
+network_mode = "no-network"
